@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+
+body{
+  font-family: 'Roboto Condensed', sans-serif;
+
+}
+.infoOder{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 1200px)
+{
+  .infoOder{
+    max-width: 1140px;
+  }
+}
+.d-flex{
+  display: flex;
+  flex-direction: row;
+  background: #f6f6f6;
+  padding: 25px;
+}
+.infoOder form{
+  flex: 4;
+}
+.d-flex .Yorder{
+  flex: 2;
+}
+.infoOder  .title{
+
+  background: linear-gradient(to bottom right, #ff9101 0%, #fad083 100%);
+  padding: 20px;
+  color: #f6f6f6;
+}
+.infoOder  .title h2{
+  margin: 0;
+  padding-left: 15px; 
+}
+.required{
+  color: red;
+}
+.d-flex label, table{
+  display: block;
+  margin: 15px;
+}
+.d-flex label>span{
+  float: left;
+  width: 25%;
+  padding-right: 10px;
+}
+.d-flex input[type="text"], input[type="tel"], input[type="email"], select
+{
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: #888;
+}
+.d-flex select{
+  width: 72%;
+  height: 45px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+.d-flex .Yorder{
+  margin-top: 15px;
+  height: auto;
+  padding: 20px;
+  border: 1px solid #dadada;
+}
+.d-flex table{
+  margin: 0;
+  padding: 0;
+}
+.d-flex th{
+  border-bottom: 1px solid #dadada;
+  padding: 10px 0;
+}
+.d-flex tr>td:nth-child(1){
+  text-align: left;
+  color: #2d2d2a;
+}
+.d-flex tr>td:nth-child(2){
+  text-align: right;
+  color: orange;
+}
+.d-flex td{
+  border-bottom: 1px solid #dadada;
+  padding: 25px 25px 25px 0;
+}
+
+.d-flex p{
+  display: block;
+  color: #888;
+  margin: 0;
+  padding-left: 25px;
+}
+.d-flex .Yorder>div{
+  padding: 15px 0; 
+}
+
+.d-flex button{
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background: orange;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+.d-flex button:hover{
+  cursor: pointer;
+  background: #fad083;
+}

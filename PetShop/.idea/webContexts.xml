@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Admin/ContentAdmin/CategorySlider.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Admin/ContentAdmin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Customer/ContentCustomer/Cart.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Customer/ContentCustomer" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Customer/ContentCustomer/Home.html" value="file://$PROJECT_DIR$/src/main/webapp/Customer/ContentCustomer" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Customer/LayoutCustomer/Head.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Customer/LayoutCustomer" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Customer/LayoutCustomer/Header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Customer/LayoutCustomer" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Home.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/footer.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/tesst.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+      </map>
+    </option>
+  </component>
+</project>

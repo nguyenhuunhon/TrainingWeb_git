@@ -1,0 +1,223 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header{
+    background-color: #ffad41;
+    height: 80px;
+    position: relative;
+    z-index:1;
+}
+
+.header .right >div{
+    margin-right: 30px;
+    position: relative;
+}
+.header .right div button{
+    width: 40px;
+    height:40px;
+    outline: none;
+    cursor: pointer;
+    background-color: #16697a;
+    color: white;
+    border: none;
+
+}
+.header .right .EmailMessages button{
+    border-radius: 30px;
+
+}
+.header .right .notify button{
+    border-radius: 30px;
+}
+.header .right{
+    float: right;
+    display: flex;
+    margin-top: 20px;
+}
+.header .right .account button{
+    width:150px;
+    border-radius: 20px;
+
+}
+.header .right .account button i{
+    font-size: 25px;
+    margin: 0px 8px;
+    line-height:40px;
+
+}
+.header .right div ul{
+    border-radius: 10px;
+    width: 200px;
+    position: absolute;
+    right:0px;
+    z-index: 10;
+    display: none;
+    list-style-type: none;
+    box-shadow: 0px 3px 20px 2px lightgrey;
+    background-color: white;
+}
+.header .right div ul li{
+
+    margin: 10px;
+    border: 1px solid lightgray;
+    border-radius:10px;
+    padding-left: 10px;
+    line-height:50px;
+    cursor: pointer;
+}
+.header .right div ul li a{
+    text-decoration: none;
+    color: black;
+}
+.header .right div button i{
+    display: block;
+}
+.header .right div ul li:hover{
+    background-color:#ff9642 ;
+}
+.active{
+    background-color:#ffe05d ;
+
+}
+.header .right .account button{
+}
+.header .right .account button span{
+    display: flex;
+}
+.header .right .account button span a{
+    display: block;
+    line-height: 40px;
+}
+.header .right .account ul li{
+    margin: 0px;
+    border: none;
+    border-radius:0px;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    height: 50px;
+    display: flex;
+
+}
+.header .right .account ul li i{
+    line-height: 50px;
+
+}
+.header .right .account ul li a{
+    margin-left: 10px;
+    font-weight: bold;
+    line-height: 50px;
+    width: 90%;
+    display: block;
+}
+.menu{
+    position: fixed;
+    bottom: 0px;
+    z-index:2;
+    background-color: #ff9642;
+    height: 100%;
+    width:15%;
+    color: white;
+    clear: both;
+}
+.menu .logo{
+    height:80px;
+    width: 100%;
+}
+.menu .logo a{
+    cursor: pointer;
+}
+.menu .logo img{
+    height: 100%;
+     width:100%;
+
+}
+.menu li{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #fff8cd;
+    transition:all 0.4s ease;
+
+}
+.menu li a{
+    display: block;
+    line-height: 50px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+
+}
+.menu li a:hover{
+    background-color: #ffe05d;
+}
+.content{
+    width: 85%;
+    margin-left: 15%;
+    padding-top:10px;
+    padding-bottom: 50px;
+}
+.content>*{
+    margin: 10px;
+}
+.user,.product,.portfioloProduct{
+    position: relative;
+
+}
+.powerUser,.powerProduct,.powerPortfioloProduct{
+    position: absolute;
+    top: 50px;
+    background-color: #F9B962;
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    transition:height 0.4s ease;
+}
+
+.showSubmenu:after {
+    position: absolute;
+    content: "";
+    top: 20px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+.path{
+    border: none !important;
+}
+.path a{
+    text-decoration: none;
+}
+.contenInfoOr{
+    margin:50px;
+}
+
+.contenInfoOr div *{
+    margin: 20px;
+}
+.contenInfoOr div h4{
+    color: #474748;
+}
+.contenInfoAd{
+    margin:50px;
+    display: flex;
+}
+.contenInfoAd .avatar h4{
+    text-align: center;
+}
+.contenInfoAd .info *{
+    margin: 10px;
+}
+.idItem{
+    text-align: center;
+}
+.idItem a{
+    display: block;
+    color: blue !important;
+}

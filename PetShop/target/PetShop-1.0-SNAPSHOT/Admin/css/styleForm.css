@@ -1,0 +1,31 @@
+.content>div{
+    width:90%;
+    border: 1px solid lightgray;
+    margin-left: 30px;
+}
+.content>div>h3{
+    height: 70px;
+    line-height: 70px;
+    background-color: #ac4b1c;
+    color: white;
+    padding-left: 10px;
+}
+.content>div form{
+    padding: 30px;
+}
+.content>div form *{
+    margin-left: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+.content>div form input,select{
+    height: 30px;
+    width: 250px;
+}
+.content>div form .submit input{
+    background-color: #1f3c88;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    cursor: pointer;
+}

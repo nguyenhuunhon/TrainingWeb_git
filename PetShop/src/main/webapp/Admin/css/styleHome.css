@@ -1,0 +1,202 @@
+
+.content .specifications{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.content .specifications > div{
+    width: 20%;
+    height: 150px;
+    padding: 20px;
+    display: flex;
+    box-shadow: 0px 3px 20px 2px lightgrey;
+    color: white;
+
+}
+.content .specifications> div *{
+    margin: 5px;
+}
+.content .specifications .visitors{
+    background-color:#f39233 ;
+}
+.content .specifications .users{
+    background-color:#b8de6f ;
+}
+.content .specifications .sales{
+    background-color :#01c5c4 ;
+}
+.content .specifications .orders{
+    background-color:#f1e189;
+}
+.content .specifications div .icon{
+    font-size: 45px;
+}
+.content .chart{
+    padding-left:100px;
+    padding-top: 110px;
+    height:500px;
+}
+.content .statistical{
+	width: 100%;
+}
+.content .statistical h4{
+	width: 30%;
+	margin:25px auto;
+	text-align: center;
+}
+ #q-graph {
+	 display: block;
+	/* fixes layout wonkiness in FF1.5 */
+	 position: relative;
+	 width: 60%;
+	 height: 300px;
+	 background: transparent;
+	 font-size: 11px;
+}
+ #q-graph caption {
+	 caption-side: top;
+	 width: 600px;
+	 text-transform: uppercase;
+	 letter-spacing: 0.5px;
+     top: -40px;
+     left: 230px;
+	 position: relative;
+     z-index: 4;
+     font-size: 15px;
+	 font-weight: bold;
+}
+ #q-graph tr, #q-graph th, #q-graph td {
+	 position: absolute;
+	 bottom: 0;
+     width: 280px;
+	 z-index: 2;
+	 margin: 0;
+	 padding: 0;
+	 text-align: center;
+}
+ #q-graph td {
+	 transition: all 0.3s ease;
+}
+ #q-graph td:hover {
+	 background-color: #4d4d4d;
+	 opacity: 0.9;
+	 color: white;
+}
+ #q-graph thead tr {
+	 left: 100%;
+	 top: 50%;
+	 bottom: auto;
+	 margin: -2.5em 0 0 5em;
+}
+ #q-graph thead th {
+	 width: 7em;
+	 padding: 0.5em;
+}
+.setThead{
+    height:30px;
+    line-height:30px;
+    top: -170px;
+    
+}
+ #q-graph thead th.visitorCol {
+
+	 left: 0;
+
+}
+ #q-graph thead th.AccountCol {
+
+    left: 7em;
+
+}
+#q-graph thead th.salesCol {
+
+    left: 14em;
+
+}
+#q-graph thead th.orderCol {
+    left: 21em;
+}
+ #q-graph tbody tr {
+	 height: 296px;
+	 padding-top: 2px;
+	 border-right: 1px dotted #c4c4c4;
+	 color: #aaa;
+}
+ #q-graph #q1 {
+	 left: 0;
+}
+ #q-graph #q2 {
+     left: 276px;
+     
+}
+ #q-graph #q3 {
+	 left: 553px;
+}
+ #q-graph #q4 {
+	 left: 830px;
+	 border-right: none;
+}
+ #q-graph tbody th {
+	 bottom: -1.75em;
+	 vertical-align: top;
+	 font-weight: bold;
+	 color: #333;
+}
+ #q-graph .bar {
+	 width: 60px;
+	 border: 1px solid;
+	 border-bottom: none;
+	 color: #000;
+}
+ #q-graph .bar p {
+	 margin: 5px 0 0;
+	 padding: 0;
+	 opacity: 0.4;
+}
+ #q-graph .visitorCol {
+	 left: 13px;
+	 background-color: #f39233;
+	 border-color: transparent;
+}
+ #q-graph .AccountCol {
+	 left: 77px;
+	 background-color: #b8de6f;
+	 border-color: transparent;
+}
+#q-graph .salesCol{
+    left: 141px;
+ background-color:#01c5c4;
+ border-color: transparent;
+}
+#q-graph .orderCol{
+    left: 205px;
+    background-color: #f1e189;
+    border-color: transparent;
+   }
+ #ticks {
+	 position: relative;
+	 top: -300px;
+	 left: 2px;
+	 width: 596px;
+	 height: 300px;
+	 z-index: 1;
+	 margin-bottom: -300px;
+	 font-size: 10px;
+	 font-family: "fira-sans-2", Verdana, sans-serif;
+}
+ #ticks .tick {
+	 position: relative;
+	 border-bottom: 1px dotted #c4c4c4;
+	 width: 1145px;
+}
+ #ticks .tick p {
+	 position: absolute;
+	 left: -8em;
+	 top: -0.8em;
+	 margin: 0 0 0 0.5em;
+}
+.h2, h2 {
+	font-size: 1.7rem !important;
+}
+ 

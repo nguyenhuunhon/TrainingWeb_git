@@ -1,0 +1,337 @@
+@media only screen and (max-width: 1200px) {
+    .mainmenu{
+        display: none;
+    }
+    #cart{
+        display: none;
+    }
+    #account{
+        display: none;
+    }
+    #cartMB{
+        display: block !important;
+    }
+    #accountMB{
+        display: block !important;
+    }
+    .header-bottom .container{
+        width: 80%;
+    }
+    #eventSearch{
+        display: none;
+    }
+    .shop-menu ul li{
+        
+        width: 50px;
+    }
+    .search_box{
+        display: block !important;
+        z-index: 6;
+    }
+    .search_box input{
+        width: 360px !important;
+        margin-left: 30px;
+    }
+    .shop-menu i{
+        font-size: 23px;
+    }
+    #BTBars{
+        display: block !important;
+    }
+    .btMore {
+        width: 11rem;   
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 1000px){
+    .header-middle .container .row {
+        padding-top: 0px;
+    }
+    .clearfix .logo img{
+        position:inherit;
+    }
+    #rowMB{
+        display: flex !important;
+    }
+    #headCenter {
+        line-height: 75px !important;
+    }
+    .search_box {
+      
+    }
+    .search_box input {
+        width: 250px !important;
+        margin-left: 5px;
+    }
+    .search_box .buttonSearch{
+        top:11.4px;
+    }
+    .shop-menu ul {
+        display: flex !important;
+    }
+    .shop-menu ul li a {
+        padding-left: 0;    
+        line-height: 60px !important;
+        font-size: 20px;
+    }
+}
+@media only screen and (max-width: 768px){
+    .navbar-toggle{
+        display: none !important;
+    }
+    .search_box input {
+        width: 190px !important;
+        margin-left: 5px;
+    }
+    .nav.navbar-nav {
+        margin-left: 40px;
+    }
+    #toolRightMB{
+        margin-left: 240px !important;
+        margin-top: -5px !important;
+    }
+    #contactMB .navbar-nav{
+        margin: 0;
+    }
+    .product-image-wrapper .productinfo  img{
+        max-width: 70%;
+        min-height: 300px;
+    }
+    .product-overlay .add-to-cart{
+        margin-bottom: -175px !important;
+    }
+    .product-overlay .headOverlay {
+        padding-top: 300px !important;
+    }
+    .footer-widget .col-sm-2{
+        float: none !important;
+        text-align: center;
+        margin: auto !important;
+    }
+    .footer-widget .col-sm-3 {
+        display: block !important;
+        text-align: center;
+        margin: auto !important;
+
+    }
+    .d-flex form label{
+        display: flex;
+        flex-direction: column;
+    }
+    .d-flex form label>span{
+        width: auto;
+    }
+    
+}
+@media only screen and (max-width: 700px){
+    #contactMB{
+        display: flex;
+        flex-direction: column;
+    }
+    #contactMB .nav-pills{
+        display: flex;
+        justify-content: space-around;
+    }
+    #contactMB  .pull-right{
+        width: 100%;
+    }
+    #contactMB  .pull-right .navbar-nav{
+        display: flex;
+        width: 35%;
+        margin: auto;
+    }
+    .search_box{
+        display: none !important;
+    }
+    #toolRightMB {
+        margin-left: 200px !important;
+    }
+    .search_boxMB{
+        display:block  !important;
+    }
+    #headCenter{
+        display: none !important;
+    }
+    #form{
+       margin-top: 80px;
+    }
+    .infoOder{
+        margin-top: 50px;
+    }
+    .modal .modal-info .info .cancel {
+        left: 1px;
+        bottom: 20px;
+    }
+    
+}
+@media only screen and (max-width: 600px){
+    #toolRightMB {
+        margin-left: 0px !important;
+    }
+    #slider{
+        margin-top: 100px;
+    }
+    .product-overlay .headOverlay {
+        padding-top: 250px !important;
+    }
+    .product-image-wrapper .productinfo  img{
+        min-height: 250px;
+    }
+    
+   
+}
+@media only screen and (max-width: 414px){
+    #toolRightMB {
+    margin-left: 6rem !important;
+
+    }
+    #rowMB{
+        flex-direction: column;
+    }
+    .header-middle{
+        height: 140px !important;
+    }
+    .search_boxMB .buttonSearch{
+        top:206px !important;
+    }
+}
+.search_boxMB{
+    display: none;
+}
+.search_boxMB input {
+    position: absolute;
+    left: 0px;
+    border: medium none;
+    color: #B2B2B2;
+    font-family: 'roboto';
+    font-size: 17px;
+    font-weight: 300;
+    height: 50px;
+    outline: medium none;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #FDB45E;
+    border-left: 5px solid #FDB45E;
+    z-index: 5;
+}
+.search_boxMB .buttonSearch{
+    position: absolute;
+    color: #B2B2B2;
+    height: 50px;
+    right: 0px;
+    top: 141px;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    background: #f9813a;
+    width: 60px;
+    padding-left: 30px;
+    z-index:6;
+}
+#menuMB{
+    width: 100%;
+    clear: both;
+    position: absolute;
+    z-index: 20;
+    background-color: white;
+    transition: all 0.3s ease-in;
+    transform:translateX(-100%);
+
+}
+#menuMB.in{
+	transform: translateX(0px);
+}
+#menuMB #Close{
+    position: absolute;
+    top:25px;
+    right:25px;
+
+}
+#menuMB #Close i{
+    font-size: 30px;
+    color: orange;
+}
+#menuMB #menuContent{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    border-top: 2px solid rgb(255, 123, 0);
+
+}
+#menuMB #menuContent>ul>li{
+    border-bottom: 1px solid orange;
+    margin-top: 50px;
+  
+}
+#menuMB #menuContent ul a{
+    font-size: 20px;
+    color:rgb(119, 65, 20);
+}
+#menuMB #menuContent ul li ul li{
+    margin-top: 30px;
+}
+#menuMB #menuContent ul li ul li a{
+    color: gray;
+    font-size: 18px;
+    border: none;
+}
+#menuMB #menuContent ul li ul li ul li {
+    margin-top: 20px;
+}
+#menuMB #menuContent ul li ul li ul li a{
+    color: gray;
+    font-size: 17px;
+}
+.showSubmenu{
+    position: relative;
+}
+.showSubmenu .drop {
+    position: absolute;
+    content: "";
+    top: 9px;
+    left: 142px;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    width: 0;
+    height: 0;
+    border-color: rgb(122, 41, 16) transparent transparent transparent;
+    cursor: pointer;
+}
+.contenSubmenu{
+    height: 0;
+    transition:height 0.4s ease;
+    overflow: hidden;
+
+}
+#AccountMBB{
+    position: absolute;
+    top:25px;
+    left: 25px;
+}
+#AccountMBB a{
+    font-size: 20px;
+    display: flex;
+}
+#AccountMBB a span p{
+    display: block;
+}
+#AccountMBB .iconACB{
+    height: 70px;
+    width: 70px;
+    background: orange;
+    border-radius: 35px;
+}
+#AccountMBB .iconACB i{
+    font-size: 50px;
+    margin-left: 15px;
+    line-height: 70px;
+    color: white;
+}
+#AccountMBB .nameAccount{
+    margin-left: 25px;
+}
+#AccountMBB .nameAccount .nameACB{
+    color: gray;
+    font-size: 25px;
+    margin-bottom: 0px;
+}

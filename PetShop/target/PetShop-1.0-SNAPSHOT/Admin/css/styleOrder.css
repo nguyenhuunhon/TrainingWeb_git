@@ -1,0 +1,10 @@
+
+.content table tr td a{
+    color: blue;
+    cursor: pointer;
+}
+.content table tr td i{
+    color: red;
+    cursor: pointer;
+
+}

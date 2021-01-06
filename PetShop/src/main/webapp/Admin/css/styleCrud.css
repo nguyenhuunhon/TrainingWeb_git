@@ -1,0 +1,30 @@
+
+.content a{
+    text-decoration: none;
+    padding: 5px;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.content .add{
+    float: right;
+    margin: 0px 30px 10px 0px;
+}
+.content .add a{
+    background-color: #2267c2;
+    padding: 10px 10px;
+   
+}
+.content .add a i{
+    margin-right: 10px;
+}
+
+.content table .delete{
+    color: orange !important;
+}
+.content table .view{
+    color:blue    
+}
+.content table .edit{
+    color: blue;    
+}
