@@ -21,11 +21,13 @@ public class ConnectDB {
     /*USE BELOW METHOD FOR YOUR DATABASE CONNECTION FOR BOTH SINGLE AND MULTILPE SQL SERVER INSTANCE(s)*/
     /*DO NOT EDIT THE BELOW METHOD, YOU MUST USE ONLY THIS ONE FOR YOUR DATABASE CONNECTION*/
     public Connection getConnection() throws Exception {
+
+
         try {
-            String url = "jdbc:mysql://localhost:3306/sql_petshop?useUnicode=true&characterEncoding=utf-8";
             Class.forName("com.mysql.jdbc.Driver");
-            return DriverManager.getConnection(url, userID, password);
-        } catch (ClassNotFoundException e) {
+            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/sql_petshop?useUnicode=true&characterEncoding=utf-8", "root", "");
+            return connect;
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
 
@@ -45,6 +47,24 @@ public class ConnectDB {
     }
 
 
+    public void excuteSQl(String sql) throws Exception {
+        Connection connect = getConnection();
+        Statement ps = connect.createStatement();
+        ps.executeUpdate(sql);
+        connect.close();
+    }
+
+    public ResultSet getData(String sql) throws Exception {
+
+        Connection con = getConnection();
+        Statement ps = con.createStatement();
+        ResultSet rs = ps.executeQuery(sql);
+        return rs;
+    }
+
+    public PreparedStatement UseStament(String sql) throws SQLException, Exception {
+        return getConnection().prepareStatement(sql);
+    }
 
     public static void main(String[] args) throws Exception {
 
