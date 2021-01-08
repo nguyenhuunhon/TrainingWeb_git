@@ -1,4 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="Model.AccountCustomer" %>
+<%@ page import="pluginView.Account" %>
+<%@ page import="pluginView.Menu" %>
+<%--
 <%@ page import="DAO.ObjectPetDAO" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="DAO.PortfolioProductDAO" %>
@@ -11,6 +15,7 @@
 <%@ page import="Model.CategoryProduct" %>
 <%@ page import="DAO.CategoryProductDAO" %>
 <%@ page import="pluginView.Menu" %><%--
+<%@ page import="Model.AccountCustomer" %>
   Created by IntelliJ IDEA.
   User: NHON
   Date: 12/24/2020
@@ -96,10 +101,18 @@
                 <div class="col-md-3 clearfix" id="toolRightMB">
                     <div class="shop-menu clearfix pull-right">
                         <ul class="nav navbar-nav">
-                            <li id="cart"><a href="/PetShop_war/Cart"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                            <li id="cart"><a href="cart.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                             <li id="cartMB" style="display: none;"><a href="cart.html"><i
                                     class="fa fa-shopping-cart"></i> </a></li>
-                            <li id="account"><a href=""><i class="fa fa-user"></i>Tài khoản</a>
+                            <li id="account"><a style="display: block" href=""><i class="fa fa-user"></i>
+                                <%AccountCustomer acc = (AccountCustomer)session.getAttribute("userLogin");    %>
+                                <%if (acc != null)
+                                {%>
+                                <%=acc.getCustomerName()%>
+                                <a class="logoutTK" href="/PetShop/Account?action=Logout">đănh xuất</a>
+                                <%}
+                                else{%>
+                                Tài khoản
                                 <div id="hoverSignin">
                                     <a id="loginOrSignin" href="./login.html">Đăng Nhập Or Tạo Tài Khoản</a>
                                     <a id="SigninFB"><i class="fab fa-facebook-f"></i>Đăng nhập bằng
@@ -107,6 +120,12 @@
                                     <a id="SigninGG"><i class="fab fa-google"></i>Đăng nhập bằng
                                         Google</a>
                                 </div>
+
+                                <%}%>
+                                <%--                                <%=new Account().getAccount(session)%>--%>
+                            </a>
+
+
                             </li>
                             <li id="accountMB" style="display: none;"><a href=""><i class="fa fa-user"></i></a></li>
                             <li id="BTBars" style="display: none;">

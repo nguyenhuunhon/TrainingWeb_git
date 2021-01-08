@@ -38,7 +38,7 @@ public class AccountCustomerDAO implements  ObjectDAO{
     }
     @Override
     public boolean add(Object obj) {
-       AccountCustomer acc = (AccountCustomer) obj;
+        AccountCustomer acc = (AccountCustomer) obj;
         try {
 //            new ConnectDB().excuteSQl("insert into account_customer values('"+ acc.getIDAccountCustomer()+"', '"+ acc.getUserName()+"', '"+ acc.getPassword()+ "', '" + acc.getCustomerName() + "', '" + acc.getEmail()+"')");
 //            return true;

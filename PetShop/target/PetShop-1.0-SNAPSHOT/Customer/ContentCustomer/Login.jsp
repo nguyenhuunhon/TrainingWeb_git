@@ -20,10 +20,11 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form">
                     <!--login form-->
-                    <h2>Đăng nhập tài khoản</h2>
-                    <form action="#">
-                        <input type="email" placeholder="Tên đăng nhập hoặc địa chỉ email" />
-                        <input type="password" placeholder="Mật khẩu" />
+                    <h2><%=request.getAttribute("notyfi")==null?"":request.getAttribute("notyfi")%></h2>
+                    <h2><%=request.getAttribute("err")==null?"Đăng nhập tài khoản":request.getAttribute("err")%></h2>
+                    <form action="/PetShop/Account?action=Login" method="post">
+                        <input type="text" name="userName" value="<%=request.getAttribute("userName")%>" placeholder="Tên đăng nhập hoặc địa chỉ email" />
+                        <input type="password" name="password" placeholder="Mật khẩu" />
                         <span>
 								<input type="checkbox" class="checkbox">
 								Lưu trữ đăng nhập
@@ -50,11 +51,11 @@
                 <div class="signup-form">
                     <!--sign up form-->
                     <h2>Tạo tài khoản!</h2>
-                    <form action="#">
-                        <input type="text" placeholder="Họ và Tên" />
-                        <input type="text" placeholder="Tên đăng nhập" />
-                        <input type="email" placeholder="Địa chỉ email" />
-                        <input type="password" placeholder="Mật khẩu" />
+                    <form action="/PetShop/Account?action=Register" method="post">
+                        <input type="text" name="name" placeholder="Họ và Tên" />
+                        <input type="text" name="username" placeholder="Tên đăng nhập" />
+                        <input type="email" name="email" placeholder="Địa chỉ email" />
+                        <input type="password" name="pass" placeholder="Mật khẩu" />
                         <button type="submit" class="btn btn-default">Đăng ký</button>
                     </form>
                 </div>

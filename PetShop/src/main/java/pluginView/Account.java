@@ -1,4 +1,4 @@
-package PluginView;
+package pluginView;
 
 import Model.AccountCustomer;
 
