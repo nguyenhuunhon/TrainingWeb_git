@@ -18,7 +18,6 @@ public class Menu {
     List<CategoryProduct> CategoryProductsCat = new ArrayList<>(new CategoryProductDAO().mapCategoryProductByObject("OBJ2").values());
     List<CategoryProduct> CategoryProductsDog = new ArrayList<>(new CategoryProductDAO().mapCategoryProductByObject("OBJ1").values());
     public String getMenuMB() throws Exception {
-
         String result = "<div id=\"menuContent\">\n" +
                 "    <ul>\n" +
                 "        <li><a href=\"../ContentCustomer/Home.jsp\">Trang chủ</a></li>" +
@@ -32,7 +31,7 @@ public class Menu {
             List<PortfolioProduct> pd = new ArrayList<>(new PortfolioProductDAO().mapPortfolioProductByCategory(d.getIDCategoryProduct()).values());
             for (PortfolioProduct p : pd) {
                 result += "<li>\n" +
-                        "                            <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "\">" + p.getNamePortfolioProduct() + "\n" +
+                        "                            <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "&Page=1\">" + p.getNamePortfolioProduct() + "\n" +
                         "                            </a>\n" +
                         "                        </li>";
             }
@@ -50,7 +49,7 @@ public class Menu {
             List<PortfolioProduct> pd = new ArrayList<>(new PortfolioProductDAO().mapPortfolioProductByCategory(d.getIDCategoryProduct()).values());
             for (PortfolioProduct p : pd) {
                 result += "<li>\n" +
-                        "                            <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "\">" + p.getNamePortfolioProduct() + "\n" +
+                        "                            <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "&Page=1\">" + p.getNamePortfolioProduct() + "\n" +
                         "                            </a>\n" +
                         "                        </li>";
             }
@@ -72,7 +71,7 @@ public class Menu {
             for (PortfolioProduct p : POfOrther) {
                 result += "<ul>\n" +
                         "                            <li>\n" +
-                        "                                <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "\">" + p.getNamePortfolioProduct() + "\n" +
+                        "                                <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "&Page=1\">" + p.getNamePortfolioProduct() + "\n" +
                         "                                </a></li>\n" +
                         "                        </ul>";
             }
@@ -127,7 +126,7 @@ public class Menu {
             List<PortfolioProduct> pd = new ArrayList<>(new PortfolioProductDAO().mapPortfolioProductByCategory(d.getIDCategoryProduct()).values());
             for (PortfolioProduct p : pd) {
                 result += "<li>\n" +
-                        "                            <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "\">" + p.getNamePortfolioProduct() + "\n" +
+                        "                            <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "&Page=1\">" + p.getNamePortfolioProduct() + "\n" +
                         "                            </a>\n" +
                         "                        </li>";
             }
@@ -145,7 +144,7 @@ public class Menu {
             List<PortfolioProduct> pd = new ArrayList<>(new PortfolioProductDAO().mapPortfolioProductByCategory(d.getIDCategoryProduct()).values());
             for (PortfolioProduct p : pd) {
                 result += "<li>\n" +
-                        "                            <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "\">" + p.getNamePortfolioProduct() + "\n" +
+                        "                            <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "&Page=1\">" + p.getNamePortfolioProduct() + "\n" +
                         "                            </a>\n" +
                         "                        </li>";
             }
@@ -159,14 +158,14 @@ public class Menu {
                 "                                                <ul role=\"menu\" id=\"itemOrther\" class=\"sub-menu\">";
         for (ObjectPet o : ObtherOrthers) {
             result += " <li>\n" +
-                    "                    <h4><a href=\"/PetShop_war/Filter?Type=Object&id=" + o.getIDObjectPet() + "\">\n" +
-                    o.getNamePet() + "\n" +
-                    "                    </a></h4>";
+                    "                    <a href=\"/PetShop_war/Filter?Type=Object&id=" + o.getIDObjectPet() + "\"><h4>\n" +
+                    o.getNamePet() + "</h4>\n" +
+                    "                    </a>";
             List<PortfolioProduct> POfOrther = new ArrayList<>(new PortfolioProductDAO().mapPortfolioProductByObject(o.getIDObjectPet()).values());
             for (PortfolioProduct p : POfOrther) {
                 result += "<ul>\n" +
                         "                            <li>\n" +
-                        "                                <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "\">" + p.getNamePortfolioProduct() + "\n" +
+                        "                                <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + p.getIDPortfolioProduct() + "&Page=1\">" + p.getNamePortfolioProduct() + "\n" +
                         "                                </a></li>\n" +
                         "                        </ul>";
             }

@@ -20,6 +20,7 @@ public class UpdateCart extends HttpServlet {
         Enumeration<String> names= request.getParameterNames();
         Iterator<String> i=names.asIterator();
         while (i.hasNext()){
+
             HttpSession session =request.getSession();
             Cart cart= (Cart) session.getAttribute("Cart");
             String next=i.next();

@@ -6,6 +6,7 @@ import Model.ConnectDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -69,33 +70,43 @@ public class AccountCustomerDAO implements  ObjectDAO{
 
     @Override
     public boolean del(String Id) {
-        mapAccountCustomer.remove(Id);
-
-        try {
-            new ConnectDB().excuteSQl("delete from account_customer where Id_AccountCustomer='"+ Id + "'");
-            return true;
-        } catch (Exception e) {
-            System.out.println("Error when detele customer :" + e.getMessage());
-        }
         return false;
 
     }
 
     public static Map<String, AccountCustomer> getLoadAccountCustomerDB() {
         Map<String,AccountCustomer> listAccountCustomer=new HashMap<>() ;
-        ResultSet rs= null;
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
         try {
-            rs = new ConnectDB().getData("select * from account_customer");
-            while (rs.next()) {
-                String IDAccountCustomer = rs.getString(1);
-                String userName = rs.getString(2);
-                String password = rs.getString(3);
-                String customerName = rs.getString(4);
-                String email = rs.getString(5);
-                Date date = rs.getDate(6);
-                listAccountCustomer.put(IDAccountCustomer,new AccountCustomer(IDAccountCustomer, userName, password,customerName,email,date));
+
+
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("select * from account_customer");
+
+                while (rs.next()) {
+                    String IDAccountCustomer = rs.getString(1);
+                    String userName = rs.getString(2);
+                    String password = rs.getString(3);
+                    String customerName = rs.getString(3);
+                    String email = rs.getString(3);
+                    listAccountCustomer.put(IDAccountCustomer, new AccountCustomer(IDAccountCustomer, userName, password, customerName, email));
+                    System.out.println(userName);
+                }
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
             }
-            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -299,6 +299,7 @@ a#scrollUp i {
     background: #f9813a;
     width: 60px;
     padding-left: 30px;
+    outline: none;
 
 }
 .search_box #AdventSearch{

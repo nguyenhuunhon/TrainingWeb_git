@@ -18,6 +18,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%request.setCharacterEncoding("UTF-8");%>
+
 <header id="header">
     <!--header-->
 
@@ -74,15 +76,17 @@
                 </div>
                 <div class="col-sm-6" id="headCenter">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Tìm kiếm phụ kiện thú cưng..."/>
-                        <a class="fas fa-search buttonSearch"></a>
+                        <form action="/PetShop_war/Filter?Type=Search&Page=1" method="post">
+                            <input type="text" name="id" class="inpSearch" placeholder="Tìm kiếm phụ kiện thú cưng..."/>
+                            <button class="fas fa-search buttonSearch"></button>
+                        </form>
                     </div>
                     <div class="header-bottom">
                         <!--header-bottom-->
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-8">
-                                        <%=new Menu().getMenu()%>
+                                    <%=new Menu().getMenu()%>
                                 </div>
                             </div>
                         </div>
@@ -96,12 +100,14 @@
                 <div class="col-md-3 clearfix" id="toolRightMB">
                     <div class="shop-menu clearfix pull-right">
                         <ul class="nav navbar-nav">
-                            <li id="cart"><a href="/PetShop_war/Cart"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                            <li id="cart"><a href="/PetShop_war/Cart"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
+                            </li>
                             <li id="cartMB" style="display: none;"><a href="cart.html"><i
                                     class="fa fa-shopping-cart"></i> </a></li>
                             <li id="account"><a href=""><i class="fa fa-user"></i>Tài khoản</a>
                                 <div id="hoverSignin">
-                                    <a id="loginOrSignin" href="./login.html">Đăng Nhập Or Tạo Tài Khoản</a>
+                                    <a id="loginOrSignin" href="../ContentCustomer/Login.jsp">Đăng Nhập Or Tạo Tài
+                                        Khoản</a>
                                     <a id="SigninFB"><i class="fab fa-facebook-f"></i>Đăng nhập bằng
                                         Facebook</a>
                                     <a id="SigninGG"><i class="fab fa-google"></i>Đăng nhập bằng

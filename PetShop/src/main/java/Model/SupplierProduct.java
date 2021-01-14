@@ -9,4 +9,12 @@ public class SupplierProduct {
         this.IDSupplierProduct = IDSupplierProduct;
         this.nameSupplier = nameSupplier;
     }
+
+    public String getIDSupplierProduct() {
+        return IDSupplierProduct;
+    }
+
+    public String getNameSupplier() {
+        return nameSupplier;
+    }
 }

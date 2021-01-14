@@ -12,10 +12,10 @@ import java.io.IOException;
 public class DeleteItemCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idProduct=request.getParameter("idProduct");
-        HttpSession session=request.getSession();
-        Cart cart=(Cart) session.getAttribute("Cart");
-        new ItemCartDAO().deleteItemCart(cart.getIDCart(),idProduct);
+        String idProduct = request.getParameter("idProduct");
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("Cart");
+        new ItemCartDAO().deleteItemCart(cart.getIDCart(), idProduct);
         response.sendRedirect("Customer/ContentCustomer/Cart.jsp");
     }
 

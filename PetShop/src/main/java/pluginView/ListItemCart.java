@@ -42,7 +42,15 @@ public class ListItemCart {
         }
         return result;
     }
+    public int totalPriceListItemCart(String IDCart){
+        int result=0;
+        List<ItemCart> list=new ItemCartDAO().listItemCartByCart(IDCart);
+        for(ItemCart l:list){
+            result+=+l.getAmount()*l.getProduct().getPrice();
+        }
+        return result;
 
+    }
     public static void main(String[] args) {
         System.out.println(new ListItemCart().getListItemCart(CartDAO.mapCart.get("GH8").getIDCart()));
     }

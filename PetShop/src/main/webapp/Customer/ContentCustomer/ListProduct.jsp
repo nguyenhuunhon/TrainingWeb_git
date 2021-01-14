@@ -1,7 +1,8 @@
 <%@ page import="DAO.ProductDAO" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="Model.Product" %>
-<%@ page import="pluginView.ContentProductByPortfolio" %>
+<%@ page import="DAO.PortfolioProductDAO" %>
+<%@ page import="pluginView.ContentListProduct" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -11,6 +12,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<!DOCTYPE html>
+<%request.setCharacterEncoding("UTF-8");%>
 <html>
 <head>
     <title>Sản phẩm theo danh mục</title>
@@ -26,21 +29,17 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items">
                     <!--features_items-->
-                    <h2 class="title text-center paddingTopTitle">Thức ăn cho chó</h2>
+                    <h2 class="title text-center paddingTopTitle"><%="xxx"%></h2>
                     <select class="sort" name="" id="">
                         <option value="" disabled selected hidden>Sắp xếp</option>
                         <option value="">Giá tăng dần</option>
                         <option value="">Giá giảm dần</option>
                     </select>
-                <%=new ContentProductByPortfolio().getContent(request.getParameter("id"))%>
-
+                    <%=new ContentListProduct().getConent(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"))%>
 
                 </div>
                 <ul class="pagination">
-                    <li class="active"><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">&raquo;</a></li>
+                    <%=new ContentListProduct().getPagination(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"))%>
                 </ul>
                 <!--features_items-->
             </div>

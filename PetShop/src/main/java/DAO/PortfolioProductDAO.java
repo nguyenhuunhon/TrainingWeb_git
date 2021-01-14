@@ -1,11 +1,13 @@
 package DAO;
 
+import Model.CategoryProduct;
 import Model.ConnectDB;
 import Model.PortfolioProduct;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -56,6 +58,46 @@ public class PortfolioProductDAO implements ObjectDAO {
         }
         return rs;
     }
+
+    public ArrayList<PortfolioProduct> getGeneralPortfolio(String nameCategory) {
+        ArrayList<PortfolioProduct> listPortfolip = new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+
+
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("select * from portfolio_product group by Name_PortfolioProduct");
+                while (rs.next()) {
+                    String IDPortfolioProduct = rs.getString(1);
+                    String namePortfolioProduct = rs.getString(2);
+                    String IDCategoryProduct = rs.getString(3);
+                    CategoryProduct ca = CategoryProductDAO.mapCategoryProduct.get(IDCategoryProduct);
+                    if (ca.getNameCategoryProduct().equals(nameCategory)) {
+                        listPortfolip.add(new PortfolioProduct(IDPortfolioProduct, namePortfolioProduct, ca));
+                    }
+                }
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listPortfolip;
+    }
+
 
     public static Map<String, PortfolioProduct> getLoadPortfolioProductDB() {
         Map<String, PortfolioProduct> listPortfolioProduct = new HashMap<>();

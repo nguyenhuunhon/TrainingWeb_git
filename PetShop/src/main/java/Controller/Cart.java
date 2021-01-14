@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Cart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            response.sendRedirect("Customer/ContentCustomer/Cart.jsp");
+        response.sendRedirect("Customer/ContentCustomer/Cart.jsp");
     }
 
     @Override

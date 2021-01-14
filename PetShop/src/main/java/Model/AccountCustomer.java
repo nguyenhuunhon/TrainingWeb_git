@@ -14,6 +14,14 @@ public class AccountCustomer {
         this.customerName = customerName;
         this.email = email;
     }
+
+    public AccountCustomer(String userName, String password, String customerName, String email) {
+        this.userName = userName;
+        this.password = password;
+        this.customerName = customerName;
+        this.email = email;
+    }
+
     public  AccountCustomer(){
 
     }

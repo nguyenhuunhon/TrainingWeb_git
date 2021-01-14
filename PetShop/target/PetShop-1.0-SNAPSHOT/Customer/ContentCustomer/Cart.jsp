@@ -8,6 +8,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Giỏ hàng</title>
@@ -39,8 +41,6 @@
                 <tbody>
                 <%Cart cart=(Cart)session.getAttribute("Cart");%>
                 <%if(cart!=null){%>
-                <%=cart.getIDCart()%>
-                <%=cart.getInforCustomer().getIDInforCustomer()%>
                 <%=new ListItemCart().getListItemCart(cart.getIDCart())%>
                 <%}else{%>
                 <h3>Giỏ hàng trống</h3>
@@ -54,7 +54,7 @@
                 <input type="submit" class="eventUpdateCart" value="CẬP NHẬP GIỎ HÀNG">
             </div>
             <div class="eventOrder">
-                <h3>TẠM TÍNH:</h3><h3 style="color: orange;">1.500.000</h3>
+                <h3>TẠM TÍNH:</h3><h3 style="color: orange;"><%=new ListItemCart().totalPriceListItemCart(cart.getIDCart())+"đ"%></h3>
                 <a class="eventOrder">TIẾN HÀNH ĐẶT HÀNG</a>
             </div>
 

@@ -54,7 +54,7 @@ public class ContentProductByCategory {
 
             }
             result+="<div class=\"btMore\">\n" +
-                    "                        <a href=\"/PetShop_war/Filter?Type=Category&id="+c.getIDPortfolioProduct()+"\">Xem Thêm</a>\n" +
+                    "                        <a href=\"/PetShop_war/Filter?Type=Portfolio&id=" + c.getIDPortfolioProduct() +"&Page=1"+"\">Xem Thêm</a>\n" +
                     "                    </div>" +
                     "               </div>";
 

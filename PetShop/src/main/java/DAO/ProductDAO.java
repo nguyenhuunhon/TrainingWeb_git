@@ -7,10 +7,7 @@ import Model.Product;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class ProductDAO implements ObjectDAO {
     public static Map<String, Product> mapProduct = getLoadProductDB();
@@ -43,6 +40,71 @@ public class ProductDAO implements ObjectDAO {
         return rs;
     }
 
+
+
+
+
+
+
+    public ArrayList<Product> getListProduct(String type, String id) {
+        ArrayList<Product> listProduct = null;
+        ArrayList<Product> listProductAll = new ArrayList<>(mapProduct.values());
+        switch (type) {
+            case "Portfolio":
+                listProduct = new ArrayList<>();
+                for (Product p : listProductAll) {
+                    if (p.getPortfolio().getIDPortfolioProduct().equals(id)) {
+                        listProduct.add(p);
+                    }
+                }
+                break;
+            case "GeneralPortfolio":
+                listProduct = new ArrayList<>();
+                for (Product p : listProductAll) {
+                    if (p.getPortfolio().getNamePortfolioProduct().equals(PortfolioProductDAO.mapPortfolioProduct.get(id).getNamePortfolioProduct())) {
+                        listProduct.add(p);
+                    }
+                }
+                break;
+            case "Suplier":
+                listProduct = new ArrayList<>();
+
+                for (Product p : listProductAll) {
+                    if (p.getSupplier().getIDSupplierProduct().equals(id)) {
+                        listProduct.add(p);
+                    }
+                }
+                break;
+            case "Price":
+                listProduct = new ArrayList<>();
+                String[] priceS = id.split(",");
+                int min = Integer.parseInt(priceS[0]);
+                int max = Integer.parseInt(priceS[1]);
+                for (Product p : listProductAll) {
+                    if (p.getPrice() >= min && p.getPrice() < max) {
+                        listProduct.add(p);
+                    }
+                }
+                break;
+            case "Search":
+                listProduct=getLoadProductBykeySearch(id);
+                break;
+        }
+        return listProduct;
+    }
+
+    public ArrayList<Product> getListProductWithPagination(String type, String id, String page) {
+        ArrayList<Product> listProduct = getListProduct(type, id);
+        ArrayList<Product> result = new ArrayList<>();
+        int pageIndex = Integer.parseInt(page) - 1;
+        for (int i = pageIndex * 12; i<pageIndex * 12 + 12;i++) {
+            if(i<listProduct.size()) {
+                result.add(listProduct.get(i));
+            }
+        }
+        return result;
+    }
+
     @Override
     public boolean add(Object obj) {
         return false;
@@ -57,7 +119,47 @@ public class ProductDAO implements ObjectDAO {
     public boolean del(String id) {
         return false;
     }
+    public ArrayList<Product> getLoadProductBykeySearch(String key){
+        ArrayList<Product> listProduct=new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
 
+
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("select * from product where Title like'%"+key+"%'");
+
+                while (rs.next()) {
+                    String IDProduct = rs.getString(1);
+                    String IDPortfolioProduct = rs.getString(2);
+                    String IDSupplierProduct = rs.getString(3);
+                    Date date = rs.getDate(4);
+                    String title = rs.getString(5);
+                    String description = rs.getString(6);
+                    int price = rs.getInt(7);
+                    String show = rs.getString(8);
+                    listProduct.add(new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show));
+                }
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listProduct;
+    }
     public static Map<String, Product> getLoadProductDB() {
         Map<String, Product> listProduct = new HashMap<>();
         Connection conn = null;
@@ -101,15 +203,13 @@ public class ProductDAO implements ObjectDAO {
     }
 
     public static void main(String[] args) throws Exception {
-//        for (String c :new ProductDAO().mapProductByCategory("EatCat").keySet()) {
-//            System.out.println(c);
-//        }
-//        for(Product p:new ProductDAO().mapProductByPortfolio("DMSP15").values()){
-//            System.out.println(p.getTitle());
-//        }
-//        for (PortfolioProduct c : PortfolioProductDAO.mapPortfolioProduct.values()) {
-//            System.out.println(c.getNamePortfolioProduct());
-//        }
-        System.out.println(ProductDAO.mapProduct.get("SP100").getPrice());
+        List<Product> listProduct2= new ArrayList<>(ProductDAO.mapProduct.values());
+        for (Product p : listProduct2) {
+            System.out.println(p.getTitle());
+        }
+        List<Product> listProduct = new ProductDAO().getLoadProductBykeySearch("ABC");
+        for (Product p : listProduct) {
+            System.out.println(p.getTitle());
+        }
     }
 }
