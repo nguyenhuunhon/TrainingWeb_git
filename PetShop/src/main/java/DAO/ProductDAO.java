@@ -93,8 +93,8 @@ public class ProductDAO implements ObjectDAO {
         return listProduct;
     }
 
-    public ArrayList<Product> getListProductWithPagination(String type, String id, String page) {
-        ArrayList<Product> listProduct = getListProduct(type, id);
+    public ArrayList<Product> getListProductWithPagination(String type, String id, String page,String sort) {
+        ArrayList<Product> listProduct=getListProdcutSort(type,id,sort);
         ArrayList<Product> result = new ArrayList<>();
         int pageIndex = Integer.parseInt(page) - 1;
         for (int i = pageIndex * 12; i<pageIndex * 12 + 12;i++) {
@@ -104,7 +104,28 @@ public class ProductDAO implements ObjectDAO {
         }
         return result;
     }
-
+    public ArrayList<Product> getListProdcutSort(String type,String id,String sort){
+        ArrayList<Product> listProduct = getListProduct(type, id);
+        switch (sort){
+            case "minToMax":
+                Collections.sort(listProduct, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return o1.getPrice()-o2.getPrice();
+                    }
+                });
+                break;
+            case "maxToMin":
+                Collections.sort(listProduct, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return -(o1.getPrice()-o2.getPrice());
+                    }
+                });
+                break;
+        }
+        return listProduct;
+    }
     @Override
     public boolean add(Object obj) {
         return false;

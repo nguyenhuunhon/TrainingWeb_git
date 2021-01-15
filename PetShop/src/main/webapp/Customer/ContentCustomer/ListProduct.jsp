@@ -29,17 +29,17 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items">
                     <!--features_items-->
-                    <h2 class="title text-center paddingTopTitle"><%="xxx"%></h2>
-                    <select class="sort" name="" id="">
-                        <option value="" disabled selected hidden>Sắp xếp</option>
-                        <option value="">Giá tăng dần</option>
-                        <option value="">Giá giảm dần</option>
+                    <h2 class="title text-center paddingTopTitle"><%=new ContentListProduct().getTitle(request.getParameter("Type"),request.getParameter("id"))%></h2>
+                    <form action="<%="/PetShop_war/Filter?Type="+request.getParameter("Type")+"&id="+request.getParameter("id")+"&Page="+request.getParameter("Page")%>" method="post">
+                    <select class="sort" onchange="this.form.submit()" name="Sort">
+                        <%=new ContentListProduct().getSelection(request.getParameter("Sort"))%>
                     </select>
-                    <%=new ContentListProduct().getConent(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"))%>
+                    </form>
+                    <%=new ContentListProduct().getConent(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"),request.getParameter("Sort"))%>
 
                 </div>
                 <ul class="pagination">
-                    <%=new ContentListProduct().getPagination(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"))%>
+                    <%=new ContentListProduct().getPagination(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"),request.getParameter("Sort"))%>
                 </ul>
                 <!--features_items-->
             </div>

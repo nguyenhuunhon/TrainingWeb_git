@@ -1,6 +1,7 @@
 package pluginView;
 
 import DAO.ImageProductDAO;
+import DAO.PortfolioProductDAO;
 import DAO.ProductDAO;
 import Model.Product;
 
@@ -8,10 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContentListProduct {
-    public String getConent(String type, String id, String page) {
+    public String getConent(String type, String id, String page, String sort) {
 
         String result = "";
-        List<Product> listProduct = new ProductDAO().getListProductWithPagination(type, id, page);
+        List<Product> listProduct = new ProductDAO().getListProductWithPagination(type, id, page, sort);
+
         for (Product p : listProduct) {
 
             result += "<div class=\"col-sm-4\" >\n" +
@@ -44,29 +46,76 @@ public class ContentListProduct {
         return result;
     }
 
-    public String getPagination(String type, String id,String page) {
+    public String getPagination(String type, String id, String page, String sort) {
         String result = "";
-        int pageIndex=Integer.parseInt(page);
-        int start=(pageIndex/5)*5+1;
+        int pageIndex = Integer.parseInt(page);
+        int start = (pageIndex / 5) * 5;
+        if (pageIndex % 5 > 0) {
+            start += 1;
+        } else {
+            start = (start - 5) + 1;
+        }
         int sizeListProduct = new ProductDAO().getListProduct(type, id).size();
         int countPage = sizeListProduct / 12;
         if (sizeListProduct % 12 > 0) {
             countPage += 1;
         }
-        if (start>5){
-            result+="<li><a href=\"/PetShop_war/Filter?Type="+type+"&id="+id+"&Page="+(pageIndex-1)+"\">&laquo;</a></li>";
+        if (start > 5) {
+            result += "<li><a href=\"/PetShop_war/Filter?Type=" + type + "&id=" + id + "&Page=" + (start - 1) + "&Sort=" + sort + "\">&laquo;</a></li>";
         }
-        for (int i = start; i <=countPage; i++) {
-            result += "<li><a href=\"/PetShop_war/Filter?Type="+type+"&id="+id+"&Page="+i+"\">" + i + "</a></li>";
-            if (i==start+4&&i!=countPage){
-                result+="<li><a href=\"/PetShop_war/Filter?Type="+type+"&id="+id+"&Page="+(i+1)+"\">&raquo;</a></li>";
+        for (int i = start; i <= countPage; i++) {
+            result += "<li><a href=\"/PetShop_war/Filter?Type=" + type + "&id=" + id + "&Page=" + i + "&Sort=" + sort + "\">" + i + "</a></li>";
+            if (i == start + 4 && i != countPage) {
+                result += "<li><a href=\"/PetShop_war/Filter?Type=" + type + "&id=" + id + "&Page=" + (i + 1) + "&Sort=" + sort + "\">&raquo;</a></li>";
                 break;
             }
         }
         return result;
     }
 
+    public String getTitle(String type, String id) {
+        String result = "";
+        switch (type) {
+            case "Portfolio":
+                result += PortfolioProductDAO.mapPortfolioProduct.get(id).getNamePortfolioProduct() + " cho " + PortfolioProductDAO.mapPortfolioProduct.get(id).getCategory().getPet().getNamePet();
+                break;
+            case "GeneralPortfolio":
+                result += PortfolioProductDAO.mapPortfolioProduct.get(id).getNamePortfolioProduct();
+                break;
+            case "Price":
+                String[] priceS = id.split(",");
+                result += "Giá từ " + priceS[0] + " đ " + "đến " + priceS[1] + " đ";
+                break;
+            case "Suplier":
+                result += "Sản phẩm của " + id;
+                break;
+            case "Search":
+                result += "Từ khóa: " + id;
+                break;
+        }
+        return result;
+    }
+
+    public String getSelection(String sort) {
+        String result = "";
+        if (sort.equals("null")) {
+            result += "<option  disabled selected hidden>Sắp xếp</option>";
+        }
+        if (sort.equals("minToMax")) {
+
+            result += "<option selected value=\"minToMax\" >Giá tăng dần</option>";
+        } else {
+            result += "<option  value=\"minToMax\">Giá tăng dần</option>";
+        }
+        if (sort.equals("maxToMin")) {
+            result += "<option selected  value=\"maxToMin\">Giá dảm dần</option>";
+        } else {
+            result += "<option value=\"maxToMin\">Giá dảm dần</option>";
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        System.out.println(new ContentListProduct().getConent("Search", "ABC", "1"));
+        System.out.println(new ContentListProduct().getSelection(null));
     }
 }
