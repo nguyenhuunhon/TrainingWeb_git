@@ -53,7 +53,7 @@ public class Account extends HttpServlet {
                             new InforCustomerDAO().edit(customerSS);
                             session.setAttribute("Customer", customerSS);
                         }
-                        response.sendRedirect("Customer/ContentCusStomer/Home.jsp");
+                        response.sendRedirect("Customer/ContentCustomer/Home.jsp");
 
                     } else {
                         request.setAttribute("userName", userName);

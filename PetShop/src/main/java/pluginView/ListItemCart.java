@@ -3,8 +3,10 @@ package pluginView;
 import DAO.CartDAO;
 import DAO.ImageProductDAO;
 import DAO.ItemCartDAO;
+import Model.Cart;
 import Model.ItemCart;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,17 @@ public class ListItemCart {
         }
         return result;
 
+    }
+    public String getTotalAmountCart(HttpSession session) {
+        Cart cart = (Cart) session.getAttribute("Cart");
+        try {
+            if (cart != null) {
+                return "<span id=\"amount\">" + new ItemCartDAO().totalAmountItemCart(cart.getIDCart()) + "</span>";
+            }
+        } catch (NullPointerException e) {
+            e.getMessage();
+        }
+        return "";
     }
     public static void main(String[] args) {
         System.out.println(new ListItemCart().getListItemCart(CartDAO.mapCart.get("GH8").getIDCart()));

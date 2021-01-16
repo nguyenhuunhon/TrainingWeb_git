@@ -2826,3 +2826,16 @@ textarea {
 .cart_quantity_up,.cart_quantity_down{
     cursor: pointer;
 }
+#submitPrice{
+    margin: auto;
+    margin-top: 40px;
+    height: 30px;
+    width: 55px;
+    line-height: 30px;
+    font-size: 17px;
+    text-align: center;
+    background: orange;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}

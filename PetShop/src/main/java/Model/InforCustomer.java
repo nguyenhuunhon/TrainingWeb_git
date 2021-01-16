@@ -17,6 +17,9 @@ public class InforCustomer {
     }
     public InforCustomer(){
         setIDCustomer();
+        this.accountCustomer=null;
+        this.address=null;
+        phone=0;
     }
 
     public String getIDInforCustomer() {

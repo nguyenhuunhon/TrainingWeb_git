@@ -59,7 +59,7 @@ public class InforCustomerDAO implements ObjectDAO {
 
     @Override
     public boolean edit(Object obj) {
-        String query = "update infocustomer set Id_InfoCustomer=?,Id_AccountCustomer=?,Id_Adress=?,Phone=?";
+        String query = "update infocustomer set Id_InfoCustomer=?,Id_AccountCustomer=?,Id_Adress=?,Phone=? where Id_InfoCustomer=? ";
         InforCustomer customer = (InforCustomer) obj;
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -81,6 +81,8 @@ public class InforCustomerDAO implements ObjectDAO {
 
                 }
                 stmt.setInt(4, customer.getPhone());
+                stmt.setString(5, customer.getIDInforCustomer());
+
                 stmt.executeUpdate();
             } finally {
 
@@ -92,7 +94,6 @@ public class InforCustomerDAO implements ObjectDAO {
                 }
 
             }
-            mapInforCustomer=getLoadInforCustomerDB();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -107,9 +108,14 @@ public class InforCustomerDAO implements ObjectDAO {
     public InforCustomer getInforCustomerByAccount(String IDAccount){
         List<InforCustomer> listInforCustomer=new ArrayList<>(mapInforCustomer.values());
         for(InforCustomer i:listInforCustomer){
-            if(i.getAccountCustomer().getIDAccountCustomer().equals(IDAccount)){
-                return i;
+            try{
+                if(i.getAccountCustomer().getIDAccountCustomer().equals(IDAccount)){
+                    return i;
+                }
+            }catch (NullPointerException e){
+                continue;
             }
+
         }
         return null;
     }

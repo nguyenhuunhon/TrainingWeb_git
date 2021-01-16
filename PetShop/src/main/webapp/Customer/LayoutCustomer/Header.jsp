@@ -10,7 +10,9 @@
 <%@ page import="DAO.CategoryNewsDAO" %>
 <%@ page import="Model.CategoryProduct" %>
 <%@ page import="DAO.CategoryProductDAO" %>
-<%@ page import="pluginView.Menu" %><%--
+<%@ page import="pluginView.Menu" %>
+<%@ page import="pluginView.ListItemCart" %>
+<%@ page import="pluginView.AccountPluView" %><%--
   Created by IntelliJ IDEA.
   User: NHON
   Date: 12/24/2020
@@ -103,16 +105,9 @@
                             <li id="cart"><a href="/PetShop_war/Cart"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
                             </li>
                             <li id="cartMB" style="display: none;"><a href="cart.html"><i
-                                    class="fa fa-shopping-cart"></i> </a></li>
-                            <li id="account"><a href=""><i class="fa fa-user"></i>Tài khoản</a>
-                                <div id="hoverSignin">
-                                    <a id="loginOrSignin" href="../ContentCustomer/Login.jsp">Đăng Nhập Or Tạo Tài
-                                        Khoản</a>
-                                    <a id="SigninFB"><i class="fab fa-facebook-f"></i>Đăng nhập bằng
-                                        Facebook</a>
-                                    <a id="SigninGG"><i class="fab fa-google"></i>Đăng nhập bằng
-                                        Google</a>
-                                </div>
+                                    class="fa fa-shopping-cart"><%=new ListItemCart().getTotalAmountCart(session)%></i> </a></li>
+                            <li id="account" style="width: auto"><div style="line-height: 40px;cursor: pointer;width:130px"><i style="margin-right: 10px" class="fa fa-user"></i><%=new AccountPluView().getAccount(session)%></div>
+
                             </li>
                             <li id="accountMB" style="display: none;"><a href=""><i class="fa fa-user"></i></a></li>
                             <li id="BTBars" style="display: none;">

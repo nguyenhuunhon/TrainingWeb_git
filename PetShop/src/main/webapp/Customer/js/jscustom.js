@@ -90,11 +90,10 @@ $(document).ready(function () {
     });
 
 
-    $("#your_id").on("input", function () {
-        document.querySelector("#formPrice").submit();
-    });
+
+
     $(".buttonSearch").click(function () {
-        var ser = document.querySelector(".inpSearch");
+        var ser = document.querySelector(" .inpSearch");
         var valSer = ser.value;
         var valEdit = valSer.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         document.querySelector(".inpSearch").value = valEdit;

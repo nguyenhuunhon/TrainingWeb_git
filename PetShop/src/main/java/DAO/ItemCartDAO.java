@@ -91,7 +91,13 @@ public class ItemCartDAO implements ObjectDAO {
         }
         return listItemCartByCart;
     }
-
+    public int totalAmountItemCart(String IDCart){
+        int rs=0;
+        for(ItemCart i:listItemCartByCart(IDCart)){
+            rs+=i.getAmount();
+        }
+        return rs;
+    }
     public boolean updateAmount(String IDCart, String IDProduct, int amount) {
         String query = "update itemcart set Amount=? where Id_Cart=? and Id_Product=?";
         Connection conn = null;
