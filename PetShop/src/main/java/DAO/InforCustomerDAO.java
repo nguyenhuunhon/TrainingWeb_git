@@ -59,7 +59,7 @@ public class InforCustomerDAO implements ObjectDAO {
 
     @Override
     public boolean edit(Object obj) {
-        String query = "update infocustomer set Id_InfoCustomer=?,Id_AccountCustomer=?,Id_Adress=?,Phone=? where Id_InfoCustomer=? ";
+        String query = "update infocustomer Id_AccountCustomer=?,Id_Adress=?,Phone=? where Id_InfoCustomer=? ";
         InforCustomer customer = (InforCustomer) obj;
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -67,21 +67,20 @@ public class InforCustomerDAO implements ObjectDAO {
             try {
                 conn = ConnectDB.getInstance().getConnection();
                 stmt = conn.prepareStatement(query);
-                stmt.setString(1, customer.getIDInforCustomer());
                 try {
-                    stmt.setString(2, customer.getAccountCustomer().getIDAccountCustomer());
+                    stmt.setString(1, customer.getAccountCustomer().getIDAccountCustomer());
+                } catch (NullPointerException e) {
+                    stmt.setString(1, null);
+
+                }
+                try {
+                    stmt.setString(2, customer.getAddress().getIDAddress());
                 } catch (NullPointerException e) {
                     stmt.setString(2, null);
 
                 }
-                try {
-                    stmt.setString(3, customer.getAddress().getIDAddress());
-                } catch (NullPointerException e) {
-                    stmt.setString(3, null);
-
-                }
-                stmt.setInt(4, customer.getPhone());
-                stmt.setString(5, customer.getIDInforCustomer());
+                stmt.setInt(3, customer.getPhone());
+                stmt.setString(4, customer.getIDInforCustomer());
 
                 stmt.executeUpdate();
             } finally {

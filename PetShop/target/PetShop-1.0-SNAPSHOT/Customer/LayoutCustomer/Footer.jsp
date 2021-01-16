@@ -97,3 +97,11 @@
 <script src="../js/main.js"></script>
 <script src="../js/jscustom.js"></script>
 <script src="../js/sweetAlert.js"></script>
+<script>
+    !function(){
+        var raw = new URL(window.location.href);
+        raw.search = raw.search.replace("%20","+");    // replace the `%20` with "+"
+        window.history.replaceState('', document.title, raw);
+    }();
+</script>
+<script src="_framework/blazor.server.js"></script>

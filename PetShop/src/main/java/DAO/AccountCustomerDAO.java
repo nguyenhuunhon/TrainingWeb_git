@@ -1,6 +1,7 @@
 package DAO;
 
 import Model.AccountCustomer;
+import Model.Address;
 import Model.ConnectDB;
 
 import java.sql.Connection;
@@ -65,6 +66,34 @@ public class AccountCustomerDAO implements  ObjectDAO{
 
     @Override
     public boolean edit(Object obj) {
+        String query = "update account_customer UserName=?,Password=?,CustomerName=?,Email=? where Id_AccountCustomer=?";
+        AccountCustomer acc = (AccountCustomer) obj;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.prepareStatement(query);
+                stmt.setString(1,acc.getUserName());
+                stmt.setString(2,acc.getPassword());
+                stmt.setString(3,acc.getCustomerName());
+                stmt.setString(4,acc.getEmail());
+                stmt.setString(5,acc.getIDAccountCustomer());
+
+            } finally {
+
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -91,8 +120,8 @@ public class AccountCustomerDAO implements  ObjectDAO{
                     String IDAccountCustomer = rs.getString(1);
                     String userName = rs.getString(2);
                     String password = rs.getString(3);
-                    String customerName = rs.getString(3);
-                    String email = rs.getString(3);
+                    String customerName = rs.getString(4);
+                    String email = rs.getString(5);
                     listAccountCustomer.put(IDAccountCustomer, new AccountCustomer(IDAccountCustomer, userName, password, customerName, email));
                     System.out.println(userName);
                 }

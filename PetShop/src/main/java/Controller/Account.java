@@ -1,8 +1,10 @@
 package Controller;
 
 import DAO.AccountCustomerDAO;
+import DAO.CartDAO;
 import DAO.InforCustomerDAO;
 import Model.AccountCustomer;
+import Model.Cart;
 import Model.InforCustomer;
 
 import javax.servlet.ServletException;
@@ -40,6 +42,9 @@ public class Account extends HttpServlet {
                         try {
                             if (!customerByAcc.equals(null)) {
                                 session.setAttribute("Customer", customerByAcc);
+                                Cart cart = new CartDAO().getCartByCustomer(customerByAcc.getIDInforCustomer());
+                                session.setAttribute("Cart", cart);
+
                             } else {
                                 InforCustomer customerSS = (InforCustomer) session.getAttribute("Customer");
                                 customerSS.setAccountCustomer(acc);

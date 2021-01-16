@@ -2,8 +2,10 @@ package DAO;
 
 import Model.Address;
 import Model.ConnectDB;
+import Model.InforCustomer;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -15,11 +17,71 @@ public class AddressDAO implements ObjectDAO {
 
     @Override
     public boolean add(Object obj) {
+        String query = "insert into adress(Id_Adress,Provincial,District, Ward, Specitically, CompanyName,Apartament)values(?,?,?,?,?,?,?)";
+        Address ad = (Address) obj;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.prepareStatement(query);
+                stmt.setString(1,ad.getIDAddress());
+                stmt.setString(2,ad.getProvincial());
+                stmt.setString(3,ad.getDistrict());
+                stmt.setString(4,ad.getWard());
+                stmt.setString(5,ad.getSpecifically());
+                stmt.setString(6,ad.getCompanyName());
+                stmt.setString(7,ad.getApartment());
+
+            } finally {
+
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean edit(Object obj) {
+        String query = "update adress Provincial=?,District=?, Ward=?, Specitically=?, CompanyName=?,Apartament=? where Id_Adress=? ";
+        Address ad = (Address) obj;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.prepareStatement(query);
+                stmt.setString(1,ad.getProvincial());
+                stmt.setString(2,ad.getDistrict());
+                stmt.setString(3,ad.getWard());
+                stmt.setString(4,ad.getSpecifically());
+                stmt.setString(5,ad.getCompanyName());
+                stmt.setString(6,ad.getApartment());
+                stmt.setString(7,ad.getIDAddress());
+
+            } finally {
+
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 

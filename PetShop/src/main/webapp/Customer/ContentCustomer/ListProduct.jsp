@@ -13,7 +13,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <!DOCTYPE html>
-<%request.setCharacterEncoding("UTF-8");%>
+
 <html>
 <head>
     <title>Sản phẩm theo danh mục</title>
@@ -25,21 +25,20 @@
     <div class="container">
         <div class="row">
             <jsp:include page="../LayoutCustomer/Left_sidebar.jsp"/>
-
             <div class="col-sm-9 padding-right">
                 <div class="features_items">
                     <!--features_items-->
                     <h2 class="title text-center paddingTopTitle"><%=new ContentListProduct().getTitle(request.getParameter("Type"),request.getParameter("id"))%></h2>
-                    <form action="<%="/PetShop_war/Filter?Type="+request.getParameter("Type")+"&id="+request.getParameter("id")+"&Page="+request.getParameter("Page")%>" method="post">
+                    <form action="<%="/PetShop_war/Filter?Type="+request.getParameter("Type")+"&id="+request.getParameter("id")+"&Page="+request.getParameter("Page")+"&Price="+request.getParameter("Price")%>" method="post">
                     <select class="sort" onchange="this.form.submit()" name="Sort">
                         <%=new ContentListProduct().getSelection(request.getParameter("Sort"))%>
                     </select>
                     </form>
-                    <%=new ContentListProduct().getConent(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"),request.getParameter("Sort"))%>
+                    <%=new ContentListProduct().getConent(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"),request.getParameter("Sort"),request.getParameter("Price"))%>
 
                 </div>
                 <ul class="pagination">
-                    <%=new ContentListProduct().getPagination(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"),request.getParameter("Sort"))%>
+                    <%=new ContentListProduct().getPagination(request.getParameter("Type"),request.getParameter("id"),request.getParameter("Page"),request.getParameter("Sort"),request.getParameter("Price"))%>
                 </ul>
                 <!--features_items-->
             </div>

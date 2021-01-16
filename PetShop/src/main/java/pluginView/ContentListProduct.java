@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContentListProduct {
-    public String getConent(String type, String id, String page, String sort) {
+    public String getConent(String type, String id, String page, String sort,String price) {
 
         String result = "";
-        List<Product> listProduct = new ProductDAO().getListProductWithPagination(type, id, page, sort);
+        List<Product> listProduct = new ProductDAO().getListProductWithPagination(type, id, page, sort,price);
 
         for (Product p : listProduct) {
 
@@ -46,7 +46,7 @@ public class ContentListProduct {
         return result;
     }
 
-    public String getPagination(String type, String id, String page, String sort) {
+    public String getPagination(String type, String id, String page, String sort,String price) {
         String result = "";
         int pageIndex = Integer.parseInt(page);
         int start = (pageIndex / 5) * 5;
@@ -55,18 +55,18 @@ public class ContentListProduct {
         } else {
             start = (start - 5) + 1;
         }
-        int sizeListProduct = new ProductDAO().getListProduct(type, id).size();
+        int sizeListProduct = new ProductDAO().getListProductWithPagination(type, id, page, sort,price).size();
         int countPage = sizeListProduct / 12;
         if (sizeListProduct % 12 > 0) {
             countPage += 1;
         }
         if (start > 5) {
-            result += "<li><a href=\"/PetShop_war/Filter?Type=" + type + "&id=" + id + "&Page=" + (start - 1) + "&Sort=" + sort + "\">&laquo;</a></li>";
+            result += "<li><a href=\"/PetShop_war/Filter?Type=" + type + "&id=" + id + "&Page=" + (start - 1) + "&Sort=" + sort +"&Price="+price+"\">&laquo;</a></li>";
         }
         for (int i = start; i <= countPage; i++) {
-            result += "<li><a href=\"/PetShop_war/Filter?Type=" + type + "&id=" + id + "&Page=" + i + "&Sort=" + sort + "\">" + i + "</a></li>";
+            result += "<li><a href=\"/PetShop_war/Filter?Type=" + type + "&id=" + id + "&Page=" + i + "&Sort=" + sort + "&Price="+price+"\">" + i + "</a></li>";
             if (i == start + 4 && i != countPage) {
-                result += "<li><a href=\"/PetShop_war/Filter?Type=" + type + "&id=" + id + "&Page=" + (i + 1) + "&Sort=" + sort + "\">&raquo;</a></li>";
+                result += "<li><a href=\"/PetShop_war/Filter?Type=" + type + "&id=" + id + "&Page=" + (i + 1) + "&Sort=" + sort + "&Price="+price+"\">&raquo;</a></li>";
                 break;
             }
         }

@@ -47,8 +47,12 @@ public class ProductDAO implements ObjectDAO {
 
 
     public ArrayList<Product> getListProduct(String type, String id) {
+
         ArrayList<Product> listProduct = null;
         ArrayList<Product> listProductAll = new ArrayList<>(mapProduct.values());
+        if(type.equals("null")&&id.equals("null")){
+            return listProductAll;
+        }
         switch (type) {
             case "Portfolio":
                 listProduct = new ArrayList<>();
@@ -93,13 +97,28 @@ public class ProductDAO implements ObjectDAO {
         return listProduct;
     }
 
-    public ArrayList<Product> getListProductWithPagination(String type, String id, String page,String sort) {
-        ArrayList<Product> listProduct=getListProdcutSort(type,id,sort);
+    public ArrayList<Product> getListProductWithPagination(String type, String id, String page,String sort,String price) {
+        ArrayList<Product> listProduct=getListFillterPrice(price,getListProdcutSort(type,id,sort));
         ArrayList<Product> result = new ArrayList<>();
         int pageIndex = Integer.parseInt(page) - 1;
         for (int i = pageIndex * 12; i<pageIndex * 12 + 12;i++) {
             if(i<listProduct.size()) {
                 result.add(listProduct.get(i));
+            }
+        }
+        return result;
+    }
+    public ArrayList<Product> getListFillterPrice(String price,ArrayList<Product> lisProduct){
+        if (price.equals("null")){
+            return lisProduct;
+        }
+        ArrayList<Product> result = new ArrayList<>();
+        String[] priceS = price.split(",");
+        int min = Integer.parseInt(priceS[0]);
+        int max = Integer.parseInt(priceS[1]);
+        for (Product p : lisProduct) {
+            if (p.getPrice() >= min && p.getPrice() < max) {
+                result.add(p);
             }
         }
         return result;

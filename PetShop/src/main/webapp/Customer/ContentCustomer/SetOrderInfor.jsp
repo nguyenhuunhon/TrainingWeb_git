@@ -1,4 +1,6 @@
-<%--
+<%@ page import="pluginView.ContentInfoOrder" %>
+<%@ page import="Model.Cart" %>
+<%@ page import="pluginView.ListItemCart" %><%--
   Created by IntelliJ IDEA.
   User: NHON
   Date: 12/24/2020
@@ -11,6 +13,8 @@
 <head>
     <title>Thông tin sản phẩm</title>
     <jsp:include page="../LayoutCustomer/importForHead.jsp"/>
+    <link href="../css/styleInfoOrder.css" rel="stylesheet">
+
 </head>
 <body>
 <jsp:include page="../LayoutCustomer/Header.jsp"/>
@@ -19,60 +23,21 @@
         <h2>Thông Tin Đặt Hàng</h2>
     </div>
     <div class="d-flex">
-        <form action="" method="">
-            <label>
-                <span class="fname">Họ Và Tên <span class="required">*</span></span>
-                <input type="text" name="fname">
-            </label>
-            <label>
-                <span>Tên công ty (Nếu có)</span>
-                <input type="text" name="cn">
-            </label>
-            <label>
-                <span>Địa Chỉ Đường Phố <span class="required">*</span></span>
-                <input type="text" name="houseadd" placeholder="Số nhà và tên đường" required>
-            </label>
-            <label>
-                <span>&nbsp;</span>
-                <input type="text" name="apartment" placeholder="Trung cư căn hộ (Nếu có)">
-            </label>
-            <label>
-                <span>Tỉnh / Thành phố <span class="required">*</span></span>
-                <input type="text" name="city">
-            </label>
-
-            <label>
-                <span>Số điện thoại <span class="required">*</span></span>
-                <input type="tel" name="city">
-            </label>
-            <label>
-                <span>Địa chỉ email <span class="required">*</span></span>
-                <input type="email" name="city">
-            </label>
-
-            <label>
-                <span>Mã khuyến mãi: </span>
-                <input type="text" placeholder="Nhập mã khuyến mãi (nếu có)">
-                <!-- <button style="width:30%;margin: auto;display: block;margin-top: 10px;border-radius: 0px;">Áp Dụng Mã khuyến mãi</button> -->
-            </label>
-
-        </form>
+        <%=new ContentInfoOrder().getContentInfo(session)%>
         <div class="Yorder">
             <table>
                 <tr>
                     <th colspan="2">Đơn hàng của bạn</th>
                 </tr>
+                <%=new ContentInfoOrder().getListItemCart(session)%>
                 <tr>
-                    <td>Viên Dưỡng Lông Cho Poodle Vegebrand</td>
-                    <td>530.000đ</td>
-                </tr>
-                <tr>
-                    <td>Phí vận chuyển </td>
+                    <td>Phí vận chuyển</td>
                     <td>Free shipping</td>
                 </tr>
                 <tr>
                     <td>Thành tiền</td>
-                    <td>500.000đ</td>
+                    <%Cart cart= (Cart) session.getAttribute("Cart");%>
+                    <td><%=new ListItemCart().totalPriceListItemCart(cart.getIDCart())%>đ</td>
                 </tr>
             </table><br>
             <div>

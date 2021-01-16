@@ -55,7 +55,7 @@
             </div>
             <div class="eventOrder">
                 <h3>TẠM TÍNH:</h3><h3 style="color: orange;"><%=new ListItemCart().totalPriceListItemCart(cart.getIDCart())+"đ"%></h3>
-                <a class="eventOrder">TIẾN HÀNH ĐẶT HÀNG</a>
+                <a href="/PetShop_war/OrderLogin" class="eventOrder">TIẾN HÀNH ĐẶT HÀNG</a>
             </div>
 
         </div>

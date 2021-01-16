@@ -91,11 +91,28 @@ $(document).ready(function () {
 
 
 
+    var envenEditInfo = document.querySelector(".headInf a");
+    var cancelEditInfo = document.querySelector(".btEditIf a");
+    var formEditInfo=document.querySelector(".inforCustomer>form");
+    var checkInfoEdit = false;
+    envenEditInfo.addEventListener('click', () => {
 
-    $(".buttonSearch").click(function () {
-        var ser = document.querySelector(" .inpSearch");
-        var valSer = ser.value;
-        var valEdit = valSer.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        document.querySelector(".inpSearch").value = valEdit;
+        if (checkInfoEdit == false) {
+            formEditInfo.style.overflow="visible";
+            checkInfoEdit = true;
+        } else {
+            formEditInfo.style.overflow="hidden";
+            checkInfoEdit= false;
+        }
     });
+    cancelEditInfo.addEventListener('click', () => {
+        formEditInfo.style.overflow="hidden";
+        checkInfoEdit= false;
+    });
+    // $(".buttonSearch").click(function () {
+    //     var ser = document.querySelector(" .inpSearch");
+    //     var valSer = ser.value;
+    //     var valEdit = valSer.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    //     document.querySelector(".inpSearch").value = valEdit;
+    // });
 });

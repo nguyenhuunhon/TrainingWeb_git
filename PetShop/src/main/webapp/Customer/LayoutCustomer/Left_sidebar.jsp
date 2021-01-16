@@ -32,8 +32,8 @@
             <!--price-range-->
             <h2>Giá cả</h2>
             <div class="well text-center">
-                <form action="/PetShop_war/Filter?Type=Price&Page=1"  id="formPrice" method="post">
-                    <input type="text" name="id" class="span2"  data-slider-min="100000"
+                <form action="<%="/PetShop_war/Filter?Type="+request.getParameter("Type")+"&id="+request.getParameter("id")+"&Page=1"+"&Sort="+request.getParameter("Sort")%>"  id="formPrice" method="post">
+                    <input type="text" value="null" name="Price" class="span2"  data-slider-min="100000"
                            data-slider-max="1000000" data-slider-step="5" data-slider-value="[250,450]"
                            id="sl2"><br/>
                     <b class="pull-left">100000</b> <b class="pull-right">1000000</b>

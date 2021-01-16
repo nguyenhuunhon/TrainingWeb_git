@@ -118,3 +118,62 @@ body{
   cursor: pointer;
   background: #fad083;
 }
+.inforCustomer{
+  width: 50%;
+}
+.inforCustomer a{
+  cursor: pointer;
+}
+.inf{
+  margin-bottom: 30px;
+}
+.inf p{
+  font-size: 17px !important;
+}
+.headInf{
+  width:80%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  padding-bottom: 5px;
+}
+.headInf a{
+  display: block;
+  color: gray;
+  border: 1px solid lightgray;
+  text-align: center;
+  height: 40px;
+  width: 50Px;
+  line-height: 40px;
+  border-radius: 2px;
+}
+.contentInf h4{
+  margin: 10px 0px 10px 20px !important;
+}
+.btEditIf{
+  display: flex;
+  float: right;
+  margin-right: 50px;
+}
+.btEditIf a{
+  display: block;
+  color: gray;
+  border: 1px solid lightgray;
+  height: 40px;
+  width: 70px;
+  line-height: 40px;
+  border-radius: 2px;
+  text-align: center;
+  margin-right: 10px;
+}
+.btEditIf input{
+  color: white;
+  background-color: orange;
+  border: none;
+  border-radius: 2px;
+}
+.inforCustomer>form{
+  height:0px;
+  overflow: hidden;
+  transition:height 0.4s ease;
+}

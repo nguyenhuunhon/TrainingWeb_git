@@ -2596,7 +2596,7 @@ textarea {
     height:200px;
     width:250px;
     position: absolute;
-    right:-60px;
+    right:-40px;
     top: 60px;
     z-index:5;
     padding-top: 20px;

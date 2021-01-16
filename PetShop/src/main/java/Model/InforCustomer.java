@@ -38,6 +38,14 @@ public class InforCustomer {
         this.accountCustomer = accountCustomer;
     }
 
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
     public int getPhone() {
         return phone;
     }
