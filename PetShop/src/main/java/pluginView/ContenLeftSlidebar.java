@@ -2,6 +2,7 @@ package pluginView;
 
 import DAO.CategoryProductDAO;
 import DAO.PortfolioProductDAO;
+import DAO.ProductDAO;
 import DAO.SupplierProductDAO;
 import Model.PortfolioProduct;
 import Model.SupplierProduct;
@@ -43,7 +44,7 @@ public class ContenLeftSlidebar {
         String result="";
         ArrayList<SupplierProduct> listSupplier=new ArrayList<>(SupplierProductDAO.mapSupplierProduct.values());
         for(SupplierProduct s:listSupplier){
-            result+="<li><a href=\"/PetShop_war/Filter?Type=Suplier&id="+s.getIDSupplierProduct()+"\"> <span class=\"pull-right\">"+s.getNameSupplier()+"</a></li>";
+            result+="<li><a href=\"/PetShop_war/Filter?Type=Suplier&id="+s.getIDSupplierProduct()+"&Page=1"+"\"> <span class=\"pull-right\">("+new ProductDAO().countSupplierByID(s.getIDSupplierProduct())+")</span>"+s.getNameSupplier()+"</a></li>";
         }
         return result;
     }

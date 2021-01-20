@@ -45,18 +45,19 @@ public class Account extends HttpServlet {
                                 Cart cart = new CartDAO().getCartByCustomer(customerByAcc.getIDInforCustomer());
                                 session.setAttribute("Cart", cart);
 
-                            } else {
-                                InforCustomer customerSS = (InforCustomer) session.getAttribute("Customer");
-                                customerSS.setAccountCustomer(acc);
-                                new InforCustomerDAO().edit(customerSS);
-                                session.setAttribute("Customer", customerSS);
-
                             }
                         } catch (NullPointerException e) {
                             InforCustomer customerSS = (InforCustomer) session.getAttribute("Customer");
-                            customerSS.setAccountCustomer(acc);
-                            new InforCustomerDAO().edit(customerSS);
-                            session.setAttribute("Customer", customerSS);
+                            if(customerSS==null){
+                                customerSS=new InforCustomer();
+                                customerSS.setAccountCustomer(acc);
+                                new InforCustomerDAO().add(customerSS);
+                                session.setAttribute("Customer", customerSS);
+                            }else {
+                                customerSS.setAccountCustomer(acc);
+                                new InforCustomerDAO().edit(customerSS);
+                                session.setAttribute("Customer", customerSS);
+                            }
                         }
                         response.sendRedirect("Customer/ContentCustomer/Home.jsp");
 
@@ -70,6 +71,8 @@ public class Account extends HttpServlet {
                 case "Logout":
 
                     session.setAttribute("userLogin", null);
+                    session.setAttribute("Cart",null);
+                    session.setAttribute("Customer",null);
                     response.sendRedirect("Customer/ContentCustomer/Login.jsp");
                     break;
 

@@ -3,6 +3,7 @@ package DAO;
 import Model.ConnectDB;
 import Model.PortfolioProduct;
 import Model.Product;
+import Model.SupplierProduct;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -104,6 +105,8 @@ public class ProductDAO implements ObjectDAO {
         for (int i = pageIndex * 12; i<pageIndex * 12 + 12;i++) {
             if(i<listProduct.size()) {
                 result.add(listProduct.get(i));
+            }else{
+                break;
             }
         }
         return result;
@@ -144,6 +147,16 @@ public class ProductDAO implements ObjectDAO {
                 break;
         }
         return listProduct;
+    }
+    public int countSupplierByID(String id) {
+        ArrayList<Product> listProduct = new ArrayList<>(mapProduct.values());
+        int result = 0;
+        for (Product p : listProduct) {
+            if (p.getSupplier().getIDSupplierProduct().equals(id)) {
+                result += 1;
+            }
+        }
+        return result;
     }
     @Override
     public boolean add(Object obj) {

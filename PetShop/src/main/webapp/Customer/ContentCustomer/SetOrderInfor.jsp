@@ -40,6 +40,7 @@
                     <td><%=new ListItemCart().totalPriceListItemCart(cart.getIDCart())%>đ</td>
                 </tr>
             </table><br>
+            <form action="/PetShop_war/Order?event=add" method="post">
             <div>
                 <input type="radio" name="dbt" value="dbt" checked> Chuyển tiền trực tiếp qua ngân hàng.
             </div>
@@ -56,7 +57,8 @@
                              alt="" width="50">
 					</span>
             </div>
-            <button type="button">Đặt Hàng</button>
+            <button type="submit">Đặt Hàng</button>
+            </form>
         </div><!-- Yorder -->
     </div>
 </div>

@@ -125,7 +125,7 @@ public class ContentInfoOrder {
     public String getListItemCart(HttpSession session){
         Cart cart=(Cart)session.getAttribute("Cart");
         String result="";
-        List<ItemCart> listItemCart=new ItemCartDAO().listItemCartByCart(cart.getIDCart());
+        List<ItemCart> listItemCart=new ItemCartDAO().listItemCartByCartNotOrder(cart.getIDCart());
         for (ItemCart i:listItemCart){
             result+="<tr>\n" +
                     "                    <td>"+i.getProduct().getTitle()+"</td>\n" +

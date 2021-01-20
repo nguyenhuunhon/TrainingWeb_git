@@ -25,7 +25,7 @@
                     <h2><%=request.getAttribute("notyfi")==null?"":request.getAttribute("notyfi")%></h2>
                     <h2><%=request.getAttribute("err")==null?"Đăng nhập tài khoản":request.getAttribute("err")%></h2>
                     <form action="/PetShop_war/Account?action=Login" method="post">
-                        <input type="text" name="userName" value="<%=request.getAttribute("userName")%>" placeholder="Tên đăng nhập hoặc địa chỉ email" />
+                        <input type="text" name="userName" value="<%=request.getAttribute("userName")==null?"":request.getParameter("userName")%>" placeholder="Tên đăng nhập hoặc địa chỉ email" />
                         <input type="password" name="password" placeholder="Mật khẩu" />
                         <span>
 								<input type="checkbox" class="checkbox">

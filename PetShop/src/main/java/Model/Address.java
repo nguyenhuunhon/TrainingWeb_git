@@ -23,6 +23,7 @@ public class Address {
     }
 
     public Address(String provincial, String district, String ward, String specifically, String companyName, String apartment) {
+        setIDAddress();
         this.provincial = provincial;
         this.district = district;
         Ward = ward;
@@ -59,7 +60,7 @@ public class Address {
         return apartment;
     }
 
-    public void setIDAddress(String IDAddress) {
+    public void setIDAddress() {
         for(int i = 0; i< AddressDAO.mapAddress.size()+1000; i++){
             String id="DC"+(i+1);
             if(!AddressDAO.mapAddress.keySet().contains(id)){

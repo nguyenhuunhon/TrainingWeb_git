@@ -13,7 +13,7 @@ import java.util.List;
 public class ListItemCart {
     public String getListItemCart(String IDCart){
         String result="";
-        List<ItemCart> list=new ItemCartDAO().listItemCartByCart(IDCart);
+        List<ItemCart> list=new ItemCartDAO().listItemCartByCartNotOrder(IDCart);
         for(ItemCart l:list){
             result+="<tr>\n" +
                     "                    <td class=\"cart_product\">\n" +
@@ -46,7 +46,7 @@ public class ListItemCart {
     }
     public int totalPriceListItemCart(String IDCart){
         int result=0;
-        List<ItemCart> list=new ItemCartDAO().listItemCartByCart(IDCart);
+        List<ItemCart> list=new ItemCartDAO().listItemCartByCartNotOrder(IDCart);
         for(ItemCart l:list){
             result+=+l.getAmount()*l.getProduct().getPrice();
         }

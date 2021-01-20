@@ -49,7 +49,7 @@ public class InforCustomerDAO implements ObjectDAO {
                 }
 
             }
-            mapInforCustomer.put(customer.getIDInforCustomer(),customer);
+            mapInforCustomer=getLoadInforCustomerDB();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,7 +59,7 @@ public class InforCustomerDAO implements ObjectDAO {
 
     @Override
     public boolean edit(Object obj) {
-        String query = "update infocustomer Id_AccountCustomer=?,Id_Adress=?,Phone=? where Id_InfoCustomer=? ";
+        String query = "update infocustomer set Id_AccountCustomer=?,Id_Adress=?,Phone=? where Id_InfoCustomer=? ";
         InforCustomer customer = (InforCustomer) obj;
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -83,11 +83,9 @@ public class InforCustomerDAO implements ObjectDAO {
                 stmt.setString(4, customer.getIDInforCustomer());
 
                 stmt.executeUpdate();
+                mapInforCustomer=getLoadInforCustomerDB();
             } finally {
 
-                if (stmt != null) {
-                    stmt.close();
-                }
                 if (conn != null) {
                     ConnectDB.getInstance().close(conn);
                 }

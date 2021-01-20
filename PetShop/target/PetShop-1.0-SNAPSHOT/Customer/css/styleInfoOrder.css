@@ -155,7 +155,7 @@ body{
   float: right;
   margin-right: 50px;
 }
-.btEditIf a{
+.btEditIf a,.btEditIf input{
   display: block;
   color: gray;
   border: 1px solid lightgray;

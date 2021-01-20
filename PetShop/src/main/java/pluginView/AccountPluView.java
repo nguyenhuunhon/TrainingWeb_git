@@ -12,7 +12,8 @@ public class AccountPluView {
 
             result += acc.getCustomerName();
             result += "<div id=\"hoverSignin\">\n" +
-                    "                     <a id=\"loginOrSignin\" href=\"/PetShop_war/Account?action=Logout\">Đăng xuất</a>\n" +
+                    "                     <a  href=\"HistoryOrder.jsp\">Lịch sử đặt hàng</a>\n" +
+                    "                     <a  href=\"/PetShop_war/Account?action=Logout\">Đăng xuất</a>\n" +
                     "                </div>";
 
         } else {

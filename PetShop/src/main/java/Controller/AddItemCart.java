@@ -47,7 +47,7 @@ public class AddItemCart extends HttpServlet {
         List<ItemCart> itemCarts = ItemCartDAO.listItemCart;
         boolean itemExist = false;
         for (ItemCart i : itemCarts) {
-            if (i.getCart().getIDCart().equals(cart.getIDCart()) && i.getProduct().getIDProduct().equals(idProduct)) {
+            if (i.getCart().getIDCart().equals(cart.getIDCart()) && i.getProduct().getIDProduct().equals(idProduct)&&i.getOrder()==null) {
                 i.setAmount(i.getAmount() + 1);
                 new ItemCartDAO().updateAmount(cart.getIDCart(),i.getProduct().getIDProduct(), i.getAmount());
                 itemExist = true;

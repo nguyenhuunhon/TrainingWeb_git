@@ -989,16 +989,13 @@ h2.title {
 }
 
 .productinfo p {
+    min-height:70px;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: #696763;
 }
 
-.productinfo img {
-    width: 100%;
-    
-}
 
 .productinfo {
     position: relative;
@@ -2622,11 +2619,11 @@ textarea {
     cursor: pointer;
     text-align: center;
 }
-#hoverSignin #loginOrSignin{
+#hoverSignin a{
     background-color: #efefef;
     color: black;
 }
-#hoverSignin #loginOrSignin:hover{
+#hoverSignin a:hover{
     
     color: orange;
 }
@@ -2651,7 +2648,8 @@ textarea {
     max-height: 200px;
 }
 .productinfo img{
-    max-height: 190px;
+    height: 190px;
+    max-width: 200px;
 }
  .product-overlay .headOverlay{
     display: block;
@@ -2838,4 +2836,57 @@ textarea {
     color: white;
     border: none;
     border-radius: 2px;
+}
+.contentStatusOrder{
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
+.contentStatusOrder .headStatus i{
+    text-align: center;
+    font-size: 50px;
+    color: green;
+    display: block;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50px;
+    background-color: rgba(234, 241, 215, 0.945);
+    margin: auto;
+}
+.contentStatusOrder h2{
+    color: green;
+}
+.contentStatusOrder p{
+    font-size: 17px;
+}
+.btStatusOrder{
+    margin: auto;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.btStatusOrder a{
+    display: block;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    width: 40%;
+    padding: 0px 10px 0px 10px;
+    background-color: orange;
+    border-radius: 5px;
+}
+.historyOrder{
+    position: relative;
+}
+.historyOrder .deleteHisOr{
+    font-size: 19px;
+    position:absolute;
+    right: 20px;
+    top: 10px;
+    color: gray;
+}
+.historyOrder img{
+    width: 100px;
+    height: 100px;
 }

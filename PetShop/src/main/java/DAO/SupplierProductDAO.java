@@ -8,6 +8,7 @@ import Model.SupplierProduct;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +30,8 @@ public class SupplierProductDAO implements ObjectDAO {
     public boolean del(String id) {
         return false;
     }
+
+
 
     public static Map<String, SupplierProduct> getLoadSupplierProductDB() {
         Map<String, SupplierProduct> listSupplierProduct = new HashMap<>();

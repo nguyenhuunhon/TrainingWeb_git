@@ -16,6 +16,8 @@ import java.io.IOException;
 public class UpdateInfoCustomer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String fname=request.getParameter("fname");
         String city=request.getParameter("city");
         String district=request.getParameter("district");
@@ -26,13 +28,13 @@ public class UpdateInfoCustomer extends HttpServlet {
         int phone=Integer.parseInt(request.getParameter("phone"));
         String email=request.getParameter("email");
         HttpSession session=request.getSession();
-        InforCustomer customerEdit= (InforCustomer) session.getAttribute("Cutomer");
+        InforCustomer customerEdit= (InforCustomer) session.getAttribute("Customer");
         Address ad=customerEdit.getAddress();
         AccountCustomer acc=customerEdit.getAccountCustomer();
         acc.setCustomerName(fname);
         acc.setEmail(email);
         new AccountCustomerDAO().edit(acc);
-        if(!ad.equals(null)){
+        if(ad!=null){
             ad.setProvincial(city);
             ad.setDistrict(district);
             ad.setWard(ward);
@@ -48,6 +50,7 @@ public class UpdateInfoCustomer extends HttpServlet {
         customerEdit.setAddress(ad);
         customerEdit.setPhone(phone);
         new InforCustomerDAO().edit(customerEdit);
+        session.setAttribute("Customer",customerEdit);
         response.sendRedirect("Customer/ContentCustomer/SetOrderInfor.jsp");
     }
 

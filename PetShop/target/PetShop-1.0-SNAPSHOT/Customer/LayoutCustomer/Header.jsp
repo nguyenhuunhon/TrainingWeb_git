@@ -106,7 +106,7 @@
                             </li>
                             <li id="cartMB" style="display: none;"><a href="cart.html"><i
                                     class="fa fa-shopping-cart"><%=new ListItemCart().getTotalAmountCart(session)%></i> </a></li>
-                            <li id="account" style="width: auto"><div style="line-height: 40px;cursor: pointer;width:130px"><i style="margin-right: 10px" class="fa fa-user"></i><%=new AccountPluView().getAccount(session)%></div>
+                            <li id="account" style="width: auto"><div style="line-height: 40px;cursor: pointer;width:150px"><i style="margin-right: 10px" class="fa fa-user"></i><%=new AccountPluView().getAccount(session)%></div>
 
                             </li>
                             <li id="accountMB" style="display: none;"><a href=""><i class="fa fa-user"></i></a></li>

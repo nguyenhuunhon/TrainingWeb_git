@@ -32,12 +32,11 @@ public class AddressDAO implements ObjectDAO {
                 stmt.setString(5,ad.getSpecifically());
                 stmt.setString(6,ad.getCompanyName());
                 stmt.setString(7,ad.getApartment());
+                stmt.executeUpdate();
+                mapAddress=getLoadAddressDB();
 
             } finally {
 
-                if (stmt != null) {
-                    stmt.close();
-                }
                 if (conn != null) {
                     ConnectDB.getInstance().close(conn);
                 }
@@ -67,12 +66,10 @@ public class AddressDAO implements ObjectDAO {
                 stmt.setString(5,ad.getCompanyName());
                 stmt.setString(6,ad.getApartment());
                 stmt.setString(7,ad.getIDAddress());
-
+                stmt.executeUpdate();
+                mapAddress=getLoadAddressDB();
             } finally {
 
-                if (stmt != null) {
-                    stmt.close();
-                }
                 if (conn != null) {
                     ConnectDB.getInstance().close(conn);
                 }
