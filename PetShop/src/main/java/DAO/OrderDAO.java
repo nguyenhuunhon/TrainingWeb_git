@@ -129,38 +129,4 @@ public class OrderDAO implements ObjectDAO {
         return listOrder;
     }
 
-    public static void main(String[] args) {
-        final String userNameMail="ngyuenhuunhon978@gmail.com";
-        final String passWordMail="tthkdursxtxdgxvh";
-        Properties prop=new Properties();
-        prop.put("mail.smtp.host","smtp.gmail.com");
-        prop.put("mail.smtp.host","587");
-        prop.put("mail.smtp.auth","true");
-        prop.put("mail.smtp.starttls.enable","true");
-
-
-        Session session1=Session.getInstance(prop,new Authenticator(){
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication(){
-                System.out.println(new PasswordAuthentication(userNameMail,passWordMail));
-                return new PasswordAuthentication(userNameMail,passWordMail);
-            }
-        });
-        Message message =new MimeMessage(session1);
-        try {
-            message.setFrom(new InternetAddress(userNameMail));
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse("ngyuenhuunhon978@gmail.com")
-            );
-            message.setSubject("emailSubject");
-            message.setContent("xd","text/html");
-            Transport.send(message,userNameMail,passWordMail);
-            System.out.println("done");
-        } catch (MessagingException  e) {
-            e.printStackTrace();
-        }
-
-
-    }
 }

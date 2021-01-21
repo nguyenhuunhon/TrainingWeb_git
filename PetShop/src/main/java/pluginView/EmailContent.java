@@ -12,10 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmailContent {
-    public String getContentOrder(HttpSession session,String idOrder) {
+    public String getContentOrder(HttpSession session) {
         Cart cart = (Cart) session.getAttribute("Cart");
         String result = "";
-        Order o=OrderDAO.mapOrder.get(idOrder);
+        Model.Order o=new Model.Order(cart,false,"later");
+
         result += "\n" +
                 "    <style>\n" +
                 "        .historyOrder{\n" +
@@ -153,6 +154,7 @@ public class EmailContent {
                 "  background: #fad083;\n" +
                 "}\n" +
                 "    </style>\n" +
+                "<body>" +
                 "<p>Chào quý khách</p><br>\n" +
                 "<p>Cảm ơn khách hàng đã tin tưởng đặt hàng của công ty chúng tôi,để giữ mối quan hệ lâu dài chúng tôi sẽ hết lòng phục vụ khách hàng, chúng tôi sẽ cố gắng xử lý nhanh chóng các đơn hàng mà khách hàng đã đặt<br>\n" +
                 "    Có gì thắt mắt hoặc sai xót khách hàng có thể liên hệ với chúng tôi bằng nhằng cách sau:<br>\n" +
@@ -166,9 +168,9 @@ public class EmailContent {
                 "            <a class=\"deleteHisOr\" href=\"/PetShop_war/Order?event=delete&id=" + o.getIDOrder() + "\"><i class=\"fas fa-times\"></i></a>\n" +
                 "            <table>\n" +
                 "                <tr>\n" +
-                "                    <th colspan=\"2\"><h4 style=\"margin-bottom: 20px;\">Mã Đơn hàng:" + o.getIDOrder() + "</h4><h4>Ngày đặt hàng : " + o.getDate() + "</h4></th>\n" +
+                "                    <th colspan=\"2\"><h4 style=\"margin-bottom: 20px;\">Mã Đơn hàng:" + o.getIDOrder() + "</h4></th>\n" +
                 "                </tr>\n";
-        List<ItemCart> lisItemCart = new ItemCartDAO().listItemCartByCartOrder(o.getIDOrder());
+        List<ItemCart> lisItemCart = new ItemCartDAO().listItemCartByCartNotOrder(cart.getIDCart());
         for (ItemCart i : lisItemCart) {
             result += "                <tr>\n" +
                     "                    <td><img src=\"../../images/Product/" + new ImageProductDAO().getAvatarProduct(i.getProduct().getIDProduct()) + ".jpg\" alt=\"\"></td>\n" +
@@ -187,7 +189,12 @@ public class EmailContent {
                 "            <h4>Trạng thái:<i style=\"color: green;\"> Đang xử lý</i></h4>\n" +
                 "\n" +
                 "        </div><!-- Yorder -->" +
-                "    <p>Quý khách có thể đi tới website của chúng tôi để mua hàng:<a href=\"\">PetShop.com</a> <br>Chúc khách hàng một ngày tối lành</p>\n";
+                "       <form action=\"http://localhost:8080/PetShop_war/Order?event=add&dbt=later\" method=\"POST\" style=\"margin:20px auto;\">\n" +
+                "      <input type=\"submit\" value=\"Xác nhận\" style=\"background: rgb(105, 105, 245); color:white;padding: 13px;font-size: 20px;border: none;\">\n" +
+                "    </form>\n" +
+                "</div>\n" +
+                "<p>Quý khách có thể đi tới website của chúng tôi để mua hàng:<a href=\"\">PetShop.com</a> <br>Chúc khách hàng một ngày tối lành</p>" +
+                "</body>";
 
         return result;
     }
