@@ -73,7 +73,7 @@
             <div class="row" id="rowMB">
                 <div class="col-md-2 clearfix">
                     <div class="logo pull-left">
-                        <a href="index.html"><img src="../../images/logo.png" alt=""/></a>
+                        <a href="/PetShop_war/Home"><img src="<%= request.getContextPath() %>/images/logo.png" alt=""/></a>
                     </div>
                 </div>
                 <div class="col-sm-6" id="headCenter">

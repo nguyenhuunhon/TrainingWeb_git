@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    var addAct=document.querySelectorAll(".addActl");
+    var addActm=document.querySelectorAll(".addActm");
+    addACSli
+    var addACSli=document.querySelectorAll(".addACSli");
+    addACSli[0].classList.add("active");
+    addAct[0].classList.add("active");
+    addActm[0].classList.add("active");
     var searchBox = document.querySelector('.search_box');
     var headerBottom = document.querySelector('.header-bottom');
     var showSearch = document.querySelector('#eventSearch #showSearch');
@@ -115,4 +122,8 @@ $(document).ready(function () {
     //     var valEdit = valSer.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     //     document.querySelector(".inpSearch").value = valEdit;
     // });
+    var addAct=document.querySelectorAll(".addActl");
+    var addActm=document.querySelectorAll(".addActm");
+    addAct[0].classList.add("active");
+    addActm[0].classList.add("active");
 });

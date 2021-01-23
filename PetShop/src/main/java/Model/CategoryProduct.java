@@ -10,6 +10,11 @@ public class CategoryProduct {
         this.pet=pet;
     }
 
+    public CategoryProduct(String IDCategoryProduct, String nameCategoryProduct) {
+        this.IDCategoryProduct = IDCategoryProduct;
+        this.nameCategoryProduct = nameCategoryProduct;
+    }
+
     public String getIDCategoryProduct() {
         return IDCategoryProduct;
     }

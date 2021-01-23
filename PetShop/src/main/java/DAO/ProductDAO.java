@@ -71,6 +71,14 @@ public class ProductDAO implements ObjectDAO {
                     }
                 }
                 break;
+            case "GeneralCategory":
+                listProduct = new ArrayList<>();
+                for (Product p : listProductAll) {
+                    if (p.getPortfolio().getCategory().getNameCategoryProduct().equals(CategoryProductDAO.mapCategoryProduct.get(id).getNameCategoryProduct())) {
+                        listProduct.add(p);
+                    }
+                }
+                break;
             case "Suplier":
                 listProduct = new ArrayList<>();
 

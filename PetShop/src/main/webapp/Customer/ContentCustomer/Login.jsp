@@ -12,6 +12,7 @@
 <head>
     <title>Đăng nhập | Đăng ký</title>
     <jsp:include page="../LayoutCustomer/importForHead.jsp"/>
+
 </head>
 <body>
 <jsp:include page="../LayoutCustomer/Header.jsp"/>

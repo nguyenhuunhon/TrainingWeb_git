@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SliderDAO implements ObjectDAO {
-    public Map<String, Slider> mapSlider = getLoadSliderDB();
+    public static Map<String, Slider> mapSlider = getLoadSliderDB();
 
 
     @Override

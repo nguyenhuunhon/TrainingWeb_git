@@ -44,8 +44,8 @@ public class CategoryProductDAO implements ObjectDAO {
         return rs;
     }
 
-    public ArrayList<String> getGeneralCategoryName() {
-        ArrayList<String> list = new ArrayList<String>();
+    public ArrayList<CategoryProduct> getGeneralCategoryName() {
+        ArrayList<CategoryProduct> list = new ArrayList<CategoryProduct>();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -55,11 +55,12 @@ public class CategoryProductDAO implements ObjectDAO {
             try {
                 conn = ConnectDB.getInstance().getConnection();
                 stmt = conn.createStatement();
-                rs = stmt.executeQuery("select Name_Category from category_product group by Name_Category");
+                rs = stmt.executeQuery("select * from category_product group by Name_Category");
 
                 while (rs.next()) {
-                    String nameCategory = rs.getString(1);
-                    list.add(nameCategory);
+                    String id=rs.getString(1);
+                    String nameCategory = rs.getString(2);
+                    list.add(new CategoryProduct(id,nameCategory));
                 }
             } finally {
                 if (rs != null) {
