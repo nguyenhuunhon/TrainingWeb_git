@@ -174,7 +174,7 @@ public class Menu {
 
         result += "</ul>\n" +
                 "        </li>";
-        result += "<li class=\"dropdown\"><a href=\"../ContentCustomer/News.jsp\">Tin tức<i\n" +
+        result += "<li class=\"dropdown\"><a href=\"/PetShop_war/Filter?Type=News&id=All\">Tin tức<i\n" +
                 "                                                    class=\"fa fa-angle-down\"></i></a>\n" +
                 "                                                <ul role=\"menu\" id=\"itemNews\" class=\"sub-menu\">";
         int colum = CategoryNews.size() / 4;

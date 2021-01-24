@@ -70,7 +70,7 @@ public class ContentHome {
                         "                                            <img src=\"../../images/Product/" + new ImageProductDAO().getAvatarProduct(p.getIDProduct()) + ".jpg\" alt=\"\"/>\n" +
                         "                                            <h2>" + p.getPrice() + "đ</h2>\n" +
                         "                                            <p><a href=\"\">" + p.getTitle() + "</a></p>\n" +
-                        "                                            <a href=\"#\" class=\"btn btn-default add-to-cart\"><i\n" +
+                        "                                            <a href=\"/PetShop_war/WatchInfo?Type=Product&id="+p.getIDProduct()+"\" class=\"btn btn-default add-to-cart\"><i\n" +
                         "                                                    class=\"fa fa-shopping-cart\"></i>Thêm sản phẩm</a>\n" +
                         "                                        </div>\n" +
                         "\n" +
@@ -79,7 +79,7 @@ public class ContentHome {
                         "                            </div>\n";
             }
             result += "                            <div class=\"btMore\">\n" +
-                    "                                <a href=\"\">Xem Thêm</a>\n" +
+                    "                                <a href=\"/PetShop_war/Filter?Type=GeneralCategory&Page=1&id="+c2.getIDCategoryProduct()+"\">Xem Thêm</a>\n" +
                     "                            </div>\n" +
                     "                        </div>\n";
         }
@@ -106,7 +106,7 @@ public class ContentHome {
                         "                                    <div class=\"product-image-wrapper\">\n" +
                         "                                        <div class=\"single-products\">\n" +
                         "                                            <div class=\"productinfo text-center\">\n" +
-                        "                                                <a href=\"\"><img src=\"../../images/Supplier/"+listSupplier.get(j).getIDSupplierProduct()+".jpg\" alt=\"\"/></a>\n" +
+                        "                                                <a href=\"/PetShop_war/Filter?Type=Suplier&id="+listSupplier.get(j).getIDSupplierProduct()+"&Page=1"+"\"><img src=\"../../images/Supplier/"+listSupplier.get(j).getIDSupplierProduct()+".jpg\" alt=\"\"/></a>\n" +
                         "\n" +
                         "                                            </div>\n" +
                         "\n" +
@@ -127,7 +127,7 @@ public class ContentHome {
                         "                                <h1><span>PET</span>-SHOP</h1>\n" +
                         "                                <h2>"+slide.getTitle()+"</h2>\n" +
                         "                                <p>"+slide.getDescription()+" </p>\n" +
-                        "                                <button type=\"button\" class=\"btn btn-default get\">Get it now</button>\n" +
+                        "                                <a  href=\"/PetShop_war/Filter?Type=GetSlide&id="+slide.getIDSlider()+"\" class=\"btn btn-default get\">Get it now</a>\n" +
                         "                            </div>\n" +
                         "                            <div class=\"col-sm-6\">\n" +
                         "                                <img src=\"../../images/Slider/"+slide.getIDSlider()+".jpg\" class=\"girl img-responsive\" alt=\"\"/>\n" +

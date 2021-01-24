@@ -1,9 +1,6 @@
 package pluginView;
 
-import DAO.ImageProductDAO;
-import DAO.PortfolioProductDAO;
-import DAO.ProductDAO;
-import DAO.SupplierProductDAO;
+import DAO.*;
 import Model.Product;
 
 import java.util.ArrayList;
@@ -57,8 +54,8 @@ public class ContentListProduct {
             start = (start - 5) + 1;
         }
         int sizeListProduct = new ProductDAO().getListFillterPrice(price,new ProductDAO().getListProdcutSort(type,id,sort)).size();
-        int countPage = sizeListProduct / 12;
-        if (sizeListProduct % 12 > 0) {
+        int countPage = sizeListProduct / 15;
+        if (sizeListProduct % 15 > 0) {
             countPage += 1;
         }
         if (start > 5) {
@@ -92,6 +89,9 @@ public class ContentListProduct {
                 break;
             case "Search":
                 result += "Từ khóa: " + id;
+                break;
+            case "GeneralCategory":
+                result+= CategoryProductDAO.mapCategoryProduct.get(id).getNameCategoryProduct();
                 break;
         }
         return result;

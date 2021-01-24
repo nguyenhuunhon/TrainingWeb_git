@@ -28,6 +28,9 @@ public class Filter extends HttpServlet {
 
                     response.sendRedirect("Customer/ContentCustomer/ListProduct.jsp?Type=" +Type+"&id="+id+"&Page="+request.getParameter("Page")+"&Sort="+request.getParameter("Sort")+"&Price="+request.getParameter("Price"));
                     break;
+                case "GeneralCategory":
+                    response.sendRedirect("Customer/ContentCustomer/ListProduct.jsp?Type=" +Type+"&id="+id+"&Page="+request.getParameter("Page")+"&Sort="+request.getParameter("Sort")+"&Price="+request.getParameter("Price"));
+                    break;
                 case "GeneralPortfolio":
                     response.sendRedirect("Customer/ContentCustomer/ListProduct.jsp?Type=" +Type+"&id="+id+"&Page="+request.getParameter("Page")+"&Sort="+request.getParameter("Sort")+"&Price="+request.getParameter("Price"));
                     break;
@@ -41,7 +44,13 @@ public class Filter extends HttpServlet {
                     response.sendRedirect("Customer/ContentCustomer/ListProduct.jsp?Type=" +Type+"&id="+ URLEncoder.encode(id, "UTF-8")+"&Page="+request.getParameter("Page")+"&Sort="+request.getParameter("Sort")+"&Price="+request.getParameter("Price"));
                     break;
                 case "News":
-                    response.sendRedirect("Customer/ContentCustomer/News.jsp");
+                    response.sendRedirect("Customer/ContentCustomer/News.jsp?id="+id);
+                    break;
+                case "GetNews":
+                    response.sendRedirect("Customer/ContentCustomer/GetNews.jsp?id="+id);
+                    break;
+                case "GetSlide":
+                    response.sendRedirect("Customer/ContentCustomer/getSlide.jsp?id="+id);
                     break;
                 default:
                     response.sendRedirect("Customer/ContentCustomer/Home.jsp");

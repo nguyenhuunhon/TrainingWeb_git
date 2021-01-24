@@ -9,14 +9,16 @@ public class News {
     private CategoryNews categoryNews;
     private Date date;
     private int view;
+    private String poster;
 
-    public News(String IDNews, String titleNews, String contentNews, CategoryNews categoryNews, Date date, int view) {
+    public News(String IDNews, String titleNews, String contentNews, CategoryNews categoryNews, Date date, int view,String poster) {
         this.IDNews = IDNews;
         this.titleNews = titleNews;
         this.contentNews = contentNews;
         this.categoryNews = categoryNews;
         this.date = date;
         this.view = view;
+        this.poster=poster;
     }
 
     public String getIDNews() {
@@ -41,5 +43,16 @@ public class News {
 
     public int getView() {
         return view;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+    public String getRepresentative(){
+        return String.copyValueOf(this.contentNews.toCharArray(),0,400)+".....";
     }
 }

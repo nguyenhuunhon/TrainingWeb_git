@@ -110,7 +110,7 @@ public class ProductDAO implements ObjectDAO {
         ArrayList<Product> listProduct=getListFillterPrice(price,getListProdcutSort(type,id,sort));
         ArrayList<Product> result = new ArrayList<>();
         int pageIndex = Integer.parseInt(page) - 1;
-        for (int i = pageIndex * 12; i<pageIndex * 12 + 12;i++) {
+        for (int i = pageIndex * 15; i<pageIndex * 15 + 15;i++) {
             if(i<listProduct.size()) {
                 result.add(listProduct.get(i));
             }else{

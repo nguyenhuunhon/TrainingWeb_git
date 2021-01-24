@@ -7,12 +7,13 @@ import Model.SalePriceProduct;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NewsDAO implements ObjectDAO {
-    public Map<String, News> mapNews = getLoadNewsDB();
+    public static Map<String, News> mapNews = getLoadNewsDB();
 
 
     @Override
@@ -29,8 +30,20 @@ public class NewsDAO implements ObjectDAO {
     public boolean del(String id) {
         return false;
     }
-
-    public Map<String, News> getLoadNewsDB() {
+    public ArrayList<News> getListNews(String category){
+        ArrayList<News> result=new ArrayList<>();
+        ArrayList<News> listAll=new ArrayList<>(mapNews.values());
+        if(category.equals("All")){
+            return listAll;
+        }
+        for(News n:listAll){
+            if(n.getCategoryNews().getIDCategoryNews().equals(category)){
+                result.add(n);
+            }
+        }
+        return result;
+    }
+    public static Map<String, News> getLoadNewsDB() {
         Map<String, News> listNews = new HashMap<>();
         Connection conn = null;
         Statement stmt = null;
@@ -49,7 +62,8 @@ public class NewsDAO implements ObjectDAO {
                     String IDCategoyNews = rs.getString(4);
                     Date date = rs.getDate(5);
                     int view = rs.getInt(6);
-                    listNews.put(IDNews, new News(IDNews, titleNews, contentNews, CategoryNewsDAO.mapCategoyNews.get(IDCategoyNews), date, view));
+                    String poster=rs.getString(7);
+                    listNews.put(IDNews, new News(IDNews, titleNews, contentNews, CategoryNewsDAO.mapCategoyNews.get(IDCategoyNews), date, view,poster));
                 }
             } finally {
                 if (rs != null) {
