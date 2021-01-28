@@ -11,10 +11,12 @@ public class Product {
     private String title;
     private String description;
     private int price;
-    private String show;
+    private boolean show;
+    private int inventory;
+    private String condition;
 
 
-    public Product(String IDProduct, PortfolioProduct Portfolio,SupplierProduct supplier,Date date,String title, String description,int price, String show) {
+    public Product(String IDProduct, PortfolioProduct Portfolio,SupplierProduct supplier,Date date,String title, String description,int price, boolean show,int inventory, String condition) {
         this.IDProduct = IDProduct;
         this.Portfolio = Portfolio;
         this.supplier=supplier;
@@ -23,6 +25,8 @@ public class Product {
         this.price=price;
         this.show = show;
         this.date=date;
+        this.inventory=inventory;
+        this.condition=condition;
     }
 
     public int getPrice() {
@@ -53,7 +57,23 @@ public class Product {
         return date;
     }
 
-    public String getShow() {
+    public boolean getShow() {
         return show;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
+    }
+
+    public int getInventory() {
+        return inventory;
     }
 }

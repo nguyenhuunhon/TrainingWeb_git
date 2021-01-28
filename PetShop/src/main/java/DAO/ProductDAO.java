@@ -105,7 +105,16 @@ public class ProductDAO implements ObjectDAO {
         }
         return listProduct;
     }
-
+    public ArrayList<Product> getListProductHot(){
+        ArrayList<Product> result=new ArrayList<>();
+        ArrayList<Product> ProductAll=new ArrayList<>(mapProduct.values());
+        for(Product p:ProductAll){
+            if(p.getCondition().equals("Hot")){
+                result.add(p);
+            }
+        }
+        return  result;
+    }
     public ArrayList<Product> getListProductWithPagination(String type, String id, String page,String sort,String price) {
         ArrayList<Product> listProduct=getListFillterPrice(price,getListProdcutSort(type,id,sort));
         ArrayList<Product> result = new ArrayList<>();
@@ -180,6 +189,178 @@ public class ProductDAO implements ObjectDAO {
     public boolean del(String id) {
         return false;
     }
+    public ArrayList<Product> getLoadProductByObject(String name){
+        ArrayList<Product> listProduct=new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+
+
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("select product.Id_Product,product.Id_PortfolioProduct,product.Id_SupplierProduct,product.Date,product.Title,product.Desription,product.Price,product.`Show`,product.Inventory,product.`Condition` from product JOIN portfolio_product on product.Id_PortfolioProduct=portfolio_product.Id_PortfolioProduct JOIN category_product on portfolio_product.Id_CategoryProduct=category_product.Id_CategoryProduct JOIN object_pet ON category_product.Id_Object=object_pet.Id_ObjectPet WHERE object_pet.NameObjectPet LIKE '%"+name+"%'");
+
+                while (rs.next()) {
+                    String IDProduct = rs.getString(1);
+                    String IDPortfolioProduct = rs.getString(2);
+                    String IDSupplierProduct = rs.getString(3);
+                    Date date = rs.getDate(4);
+                    String title = rs.getString(5);
+                    String description = rs.getString(6);
+                    int price = rs.getInt(7);
+                    boolean show = rs.getBoolean(8);
+                    int inventory=rs.getInt(9);
+                    String condition=rs.getString(10);
+                    listProduct.add(new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show,inventory,condition));
+                }
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listProduct;
+    }
+    public ArrayList<Product> getLoadProductByCategory(String name){
+        ArrayList<Product> listProduct=new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+
+
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("select product.Id_Product,product.Id_PortfolioProduct,product.Id_SupplierProduct,product.Date,product.Title,product.Desription,product.Price,product.`Show`,product.Inventory,product.`Condition` from product JOIN portfolio_product on product.Id_PortfolioProduct=portfolio_product.Id_PortfolioProduct JOIN category_product on portfolio_product.Id_CategoryProduct=category_product.Id_CategoryProduct WHERE category_product.Name_Category LIKE '%"+name+"%'");
+
+                while (rs.next()) {
+                    String IDProduct = rs.getString(1);
+                    String IDPortfolioProduct = rs.getString(2);
+                    String IDSupplierProduct = rs.getString(3);
+                    Date date = rs.getDate(4);
+                    String title = rs.getString(5);
+                    String description = rs.getString(6);
+                    int price = rs.getInt(7);
+                    boolean show = rs.getBoolean(8);
+                    int inventory=rs.getInt(9);
+                    String condition=rs.getString(10);
+                    listProduct.add(new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show,inventory,condition));
+                }
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listProduct;
+    }
+    public ArrayList<Product> getLoadProductByNamePortfolio(String name){
+        ArrayList<Product> listProduct=new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+
+
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("select product.Id_Product,product.Id_PortfolioProduct,product.Id_SupplierProduct,product.Date,product.Title,product.Desription,product.Price,product.`Show`,product.Inventory,product.`Condition` from product JOIN portfolio_product on product.Id_PortfolioProduct=portfolio_product.Id_PortfolioProduct WHERE portfolio_product.Name_PortfolioProduct LIKE '%"+name+"%'");
+
+                while (rs.next()) {
+                    String IDProduct = rs.getString(1);
+                    String IDPortfolioProduct = rs.getString(2);
+                    String IDSupplierProduct = rs.getString(3);
+                    Date date = rs.getDate(4);
+                    String title = rs.getString(5);
+                    String description = rs.getString(6);
+                    int price = rs.getInt(7);
+                    boolean show = rs.getBoolean(8);
+                    int inventory=rs.getInt(9);
+                    String condition=rs.getString(10);
+                    listProduct.add(new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show,inventory,condition));
+                }
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listProduct;
+    }
+    public ArrayList<Product> getLoadProductBySupplier(String name){
+        ArrayList<Product> listProduct=new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+
+
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("select product.Id_Product,product.Id_PortfolioProduct,product.Id_SupplierProduct,product.Date,product.Title,product.Desription,product.Price,product.`Show`,product.Inventory,product.`Condition` from product JOIN supplier_product ON product.Id_SupplierProduct=supplier_product.Id_SupplierProduct WHERE supplier_product.Name_SupplierProduct  LIKE '%"+name+"%'");
+
+                while (rs.next()) {
+                    String IDProduct = rs.getString(1);
+                    String IDPortfolioProduct = rs.getString(2);
+                    String IDSupplierProduct = rs.getString(3);
+                    Date date = rs.getDate(4);
+                    String title = rs.getString(5);
+                    String description = rs.getString(6);
+                    int price = rs.getInt(7);
+                    boolean show = rs.getBoolean(8);
+                    int inventory=rs.getInt(9);
+                    String condition=rs.getString(10);
+                    listProduct.add(new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show,inventory,condition));
+                }
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listProduct;
+    }
     public ArrayList<Product> getLoadProductBykeySearch(String key){
         ArrayList<Product> listProduct=new ArrayList<>();
         Connection conn = null;
@@ -201,8 +382,10 @@ public class ProductDAO implements ObjectDAO {
                     String title = rs.getString(5);
                     String description = rs.getString(6);
                     int price = rs.getInt(7);
-                    String show = rs.getString(8);
-                    listProduct.add(new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show));
+                    boolean show = rs.getBoolean(8);
+                    int inventory=rs.getInt(9);
+                    String condition=rs.getString(10);
+                    listProduct.add(new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show,inventory,condition));
                 }
             } finally {
                 if (rs != null) {
@@ -220,6 +403,100 @@ public class ProductDAO implements ObjectDAO {
             e.printStackTrace();
         }
         return listProduct;
+    }
+    public ArrayList<Product> getLoadProductbyPrice(String pricef,int lenght){
+        ArrayList<Product> listProduct=new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+
+
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("select * FROM product WHERE Price like '"+pricef+"%'AND LENGTH(Price)="+lenght+"");
+
+                while (rs.next()) {
+                    String IDProduct = rs.getString(1);
+                    String IDPortfolioProduct = rs.getString(2);
+                    String IDSupplierProduct = rs.getString(3);
+                    Date date = rs.getDate(4);
+                    String title = rs.getString(5);
+                    String description = rs.getString(6);
+                    int price = rs.getInt(7);
+                    boolean show = rs.getBoolean(8);
+                    int inventory=rs.getInt(9);
+                    String condition=rs.getString(10);
+                    listProduct.add(new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show,inventory,condition));
+                }
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listProduct;
+    }
+    public ArrayList<Product> getListProductWithPaginationAd(String type,String input,String page){
+        ArrayList<Product> listProduct=getFillterProductAd(type,input);
+        int pageIndex = Integer.parseInt(page) - 1;
+        if(page.equals("null")){
+            pageIndex=1;
+        }
+        ArrayList<Product> result = new ArrayList<>();
+        for (int i = pageIndex * 15; i<pageIndex * 15 + 15;i++) {
+            if(i<listProduct.size()) {
+                result.add(listProduct.get(i));
+            }else{
+                break;
+            }
+        }
+        return result;
+    }
+    public ArrayList<Product> getFillterProductAd(String type,String input){
+        String inputE=input.trim();
+
+        ArrayList<Product> result=new ArrayList<>();
+        if(type.equals("All")||type.equals("null")){
+            return new ArrayList<>(mapProduct.values());
+        }
+        switch (type){
+            case "IdProduct":
+                result.add(mapProduct.get(input));
+            break;
+            case "nameProduct":
+                result=getLoadProductBykeySearch(inputE);
+                break;
+            case "Portfolio":
+                result=getLoadProductByNamePortfolio(inputE);
+                break;
+            case "Category":
+                result=getLoadProductByCategory(inputE);
+                break;
+            case "Object":
+                result=getLoadProductByObject(inputE);
+                break;
+            case "Supplier":
+                result=getLoadProductBySupplier(inputE);
+                break;
+            case "Price":
+                result=getLoadProductbyPrice(inputE.substring(0,1),inputE.length());
+                break;
+            default:
+                result=new ArrayList<>(mapProduct.values());
+                break;
+        }
+        return result;
     }
     public static Map<String, Product> getLoadProductDB() {
         Map<String, Product> listProduct = new HashMap<>();
@@ -242,8 +519,10 @@ public class ProductDAO implements ObjectDAO {
                     String title = rs.getString(5);
                     String description = rs.getString(6);
                     int price = rs.getInt(7);
-                    String show = rs.getString(8);
-                    listProduct.put(IDProduct, new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show));
+                    boolean show = rs.getBoolean(8);
+                    int inventory=rs.getInt(9);
+                    String condition=rs.getString(10);
+                    listProduct.put(IDProduct, new Product(IDProduct, PortfolioProductDAO.mapPortfolioProduct.get(IDPortfolioProduct), SupplierProductDAO.mapSupplierProduct.get(IDSupplierProduct), date, title, description, price, show,inventory,condition));
                 }
             } finally {
                 if (rs != null) {

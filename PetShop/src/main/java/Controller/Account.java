@@ -1,9 +1,8 @@
 package Controller;
 
-import DAO.AccountCustomerDAO;
+import DAO.AccountDAO;
 import DAO.CartDAO;
 import DAO.InforCustomerDAO;
-import Model.AccountCustomer;
 import Model.Cart;
 import Model.InforCustomer;
 
@@ -34,7 +33,7 @@ public class Account extends HttpServlet {
                 case "Login":
                     String userName = request.getParameter("userName");
                     String password = request.getParameter("password");
-                    AccountCustomer acc = new AccountCustomerDAO().getAccount(userName, password);
+                    Model.Account acc = new AccountDAO().getAccount(userName, password);
                     if (acc != null) {
                         session.setAttribute("userLogin", acc);
                         InforCustomer customerByAcc = new InforCustomerDAO().getInforCustomerByAccount(acc.getIDAccountCustomer());
@@ -82,13 +81,13 @@ public class Account extends HttpServlet {
                     String email = request.getParameter("email");
                     String pass = request.getParameter("pass");
 
-                    boolean checkRegister = new AccountCustomerDAO().checkRegister(username, email);
+                    boolean checkRegister = new AccountDAO().checkRegister(username, email);
                     if (checkRegister == true) {
                         request.setAttribute("notyfi", "Tên đăng nhập hoặc email đã tồn tại");
                         request.getRequestDispatcher("Customer/ContentCustomer/Login.jsp").forward(request, response);
                     } else {
-                        AccountCustomer accR = new AccountCustomer(username, pass, name, email);
-                        new AccountCustomerDAO().add(accR);
+                        Model.Account accR = new Model.Account(username, pass, name, email);
+                        new AccountDAO().add(accR);
                         request.setAttribute("notyfi", "Đăng ký thành Công vui lòng đăng nhập");
                         request.getRequestDispatcher("Customer/ContentCustomer/Login.jsp").forward(request, response);
                     }

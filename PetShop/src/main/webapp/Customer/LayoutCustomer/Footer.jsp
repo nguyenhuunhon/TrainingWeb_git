@@ -89,14 +89,13 @@
 
 </footer>
 <!--/Footer-->
-<script src="../js/jquery.js"></script>
-<script src="../js/price-range.js"></script>
-<script src="../js/jquery.scrollUp.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.prettyPhoto.js"></script>
-<script src="../js/main.js"></script>
-<script src="../js/jscustom.js"></script>
-<script src="../js/sweetAlert.js"></script>
+<script src="<%= request.getContextPath() %>/Customer/js/jquery.js"></script>
+<script src="<%= request.getContextPath() %>/Customer/js/price-range.js"></script>
+<script src="<%= request.getContextPath() %>/Customer/js/jquery.scrollUp.min.js"></script>
+<script src="<%= request.getContextPath() %>/Customer/js/bootstrap.min.js"></script>
+<script src="<%= request.getContextPath() %>/Customer/js/jquery.prettyPhoto.js"></script>
+<script src="<%= request.getContextPath() %>/Customer/js/main.js"></script>
+<script src="<%= request.getContextPath() %>/Customer/js/sweetAlert.js"></script>
 <script>
     !function(){
         var raw = new URL(window.location.href);
@@ -104,4 +103,5 @@
         window.history.replaceState('', document.title, raw);
     }();
 </script>
+<script src="<%= request.getContextPath() %>/Customer/js/jscustom.js"></script>
 <script src="_framework/blazor.server.js"></script>

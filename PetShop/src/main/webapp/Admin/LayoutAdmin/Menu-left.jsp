@@ -11,7 +11,7 @@
     <ul>
         <li class="product showSubmenu"><a>Quản lý sản phẩm</a>
             <ul class="powerProduct">
-                <li><a href="./Product.jsp">Sản phẩm</a></li>
+                <li><a href="/PetShop_war/FillterProductAd?page=1">Sản phẩm</a></li>
                 <li><a href="./SalePriceProduct.jsp">Sản phẩm khuyến mãi</a></li>
                 <li><a href="./ImageProduct.jsp">Hình ảnh sản phẩm</a></li>
 

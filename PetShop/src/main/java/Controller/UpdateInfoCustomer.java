@@ -1,9 +1,9 @@
 package Controller;
 
-import DAO.AccountCustomerDAO;
+import DAO.AccountDAO;
 import DAO.AddressDAO;
 import DAO.InforCustomerDAO;
-import Model.AccountCustomer;
+import Model.Account;
 import Model.Address;
 import Model.InforCustomer;
 
@@ -30,10 +30,10 @@ public class UpdateInfoCustomer extends HttpServlet {
         HttpSession session=request.getSession();
         InforCustomer customerEdit= (InforCustomer) session.getAttribute("Customer");
         Address ad=customerEdit.getAddress();
-        AccountCustomer acc=customerEdit.getAccountCustomer();
+        Account acc=customerEdit.getAccountCustomer();
         acc.setCustomerName(fname);
         acc.setEmail(email);
-        new AccountCustomerDAO().edit(acc);
+        new AccountDAO().edit(acc);
         if(ad!=null){
             ad.setProvincial(city);
             ad.setDistrict(district);

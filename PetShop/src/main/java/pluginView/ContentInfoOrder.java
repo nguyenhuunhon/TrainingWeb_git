@@ -1,7 +1,7 @@
 package pluginView;
 
 import DAO.ItemCartDAO;
-import Model.AccountCustomer;
+import Model.Account;
 import Model.Cart;
 import Model.InforCustomer;
 import Model.ItemCart;
@@ -13,7 +13,7 @@ public class ContentInfoOrder {
     public String getContentInfo(HttpSession session){
         String result="";
         InforCustomer customer=(InforCustomer)session.getAttribute("Customer");
-        AccountCustomer acc=(AccountCustomer)session.getAttribute("userLogin");
+        Account acc=(Account)session.getAttribute("userLogin");
         if (customer.getPhone()==0||customer.getAddress().getDistrict()==null||customer.getAddress().getProvincial()==null||customer.getAddress().getWard()==null||customer.getAddress().getSpecifically()==null){
                 result+="        <form action=\"/PetShop_war/UpdateInfoCustomer\" method=\"post\">\n" +
                         "            <label>\n" +

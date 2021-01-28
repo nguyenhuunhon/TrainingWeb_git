@@ -26,7 +26,7 @@ public class ContentNews {
                     "                            <img src=\"../../images/news/"+n.getIDNews()+".jpg\" alt=\"\">\n" +
                     "                        </a>\n" +
                     "                        <p>"+n.getRepresentative()+"</p> <a\n" +
-                    "                            class=\"btn btn-primary\" href=\"/PetShop_war/Filter?Type=GetNews&id="+n.getIDNews()+"\">Xem Thêm</a>\n" +
+                    "                            class=\"btn btn-primary\" href=\"/PetShop_war/WatchInfo?Type=GetNews&id="+n.getIDNews()+"\">Xem Thêm</a>\n" +
                     "                    </div>\n";
         }
         return result;

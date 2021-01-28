@@ -46,12 +46,7 @@ public class Filter extends HttpServlet {
                 case "News":
                     response.sendRedirect("Customer/ContentCustomer/News.jsp?id="+id);
                     break;
-                case "GetNews":
-                    response.sendRedirect("Customer/ContentCustomer/GetNews.jsp?id="+id);
-                    break;
-                case "GetSlide":
-                    response.sendRedirect("Customer/ContentCustomer/getSlide.jsp?id="+id);
-                    break;
+
                 default:
                     response.sendRedirect("Customer/ContentCustomer/Home.jsp");
                     break;

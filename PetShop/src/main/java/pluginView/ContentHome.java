@@ -8,9 +8,8 @@ import java.util.ArrayList;
 public class ContentHome {
     public String getContentHostProduct() {
         String result = "";
-        ArrayList<HotProduct> listHotProduct = new ArrayList<>(HotProductDAO.mapHotProduct.values());
-        for (HotProduct h : listHotProduct) {
-            Product p = h.getProduct();
+        ArrayList<Product> listHotProduct = new ProductDAO().getListProductHot();
+        for (Product p : listHotProduct) {
             result += "<div class=\"col-sm-4\" >\n" +
                     "                        <div class=\"product-image-wrapper\" >\n" +
                     "                            <div class=\"single-products\" >\n" +
@@ -97,7 +96,7 @@ public class ContentHome {
             slides=slides+1;
         }
         for(int i=0;i<slides;i++){
-            result+="<div class=\"item\">\n";
+            result+="<div class=\"item addACSliSup\">\n";
             for(int j=i*3;j<i*3+3;j++){
                 if(j==listSupplier.size()){
                     break;
@@ -127,7 +126,7 @@ public class ContentHome {
                         "                                <h1><span>PET</span>-SHOP</h1>\n" +
                         "                                <h2>"+slide.getTitle()+"</h2>\n" +
                         "                                <p>"+slide.getDescription()+" </p>\n" +
-                        "                                <a  href=\"/PetShop_war/Filter?Type=GetSlide&id="+slide.getIDSlider()+"\" class=\"btn btn-default get\">Get it now</a>\n" +
+                        "                                <a  href=\"/PetShop_war/WatchInfo?Type=GetSlide&id="+slide.getIDSlider()+"\" class=\"btn btn-default get\">Get it now</a>\n" +
                         "                            </div>\n" +
                         "                            <div class=\"col-sm-6\">\n" +
                         "                                <img src=\"../../images/Slider/"+slide.getIDSlider()+".jpg\" class=\"girl img-responsive\" alt=\"\"/>\n" +

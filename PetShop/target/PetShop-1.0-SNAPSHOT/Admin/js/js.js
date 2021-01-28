@@ -61,5 +61,15 @@ window.onload = function () {
             powerPortfioloProduct.style.height="0px";
             checkPP=false;
         }
-    })
+    });
+
 }
+$(document).ready(function() {
+    $("#selectPortfolioPro").select2();
+    $("#selectCategoryPro").select2();
+    $("#selectObjectPro").select2();
+    $("#selectSupplierPro").select2();
+    $("#condition").select2();
+
+
+});

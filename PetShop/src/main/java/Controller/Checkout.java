@@ -1,7 +1,7 @@
 package Controller;
 
 
-import Model.AccountCustomer;
+import Model.Account;
 import Model.MailService;
 import pluginView.EmailContent;
 
@@ -17,7 +17,7 @@ public class Checkout extends HttpServlet {
         String dbt=request.getParameter("dbt");
         HttpSession session =request.getSession();
         Model.Cart cart= (Model.Cart) session.getAttribute("Cart");
-        AccountCustomer acc= (AccountCustomer) session.getAttribute("userLogin");
+        Account acc= (Account) session.getAttribute("userLogin");
         switch (dbt){
             case "later":
                 String emailTo=acc.getEmail();

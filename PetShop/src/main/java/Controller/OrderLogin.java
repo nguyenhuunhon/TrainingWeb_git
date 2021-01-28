@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.AccountCustomer;
+import Model.Account;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,7 +12,7 @@ public class OrderLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session=request.getSession();
-        AccountCustomer acc=(AccountCustomer)session.getAttribute("userLogin");
+        Account acc=(Account)session.getAttribute("userLogin");
         System.out.println("Sdfsdf");
         if(acc!=null){
             response.sendRedirect("Customer/ContentCustomer/SetOrderInfor.jsp");

@@ -45,7 +45,7 @@ public class PortfolioProductDAO implements ObjectDAO {
         return rs;
     }
 
-    public Map<String, PortfolioProduct> mapPortfolioProductByCategory(String IDCategory) throws Exception {
+    public Map<String, PortfolioProduct> mapPortfolioProductByCategory(String IDCategory) {
         Map<String, PortfolioProduct> rs = new HashMap<>();
         Iterator<Map.Entry<String, PortfolioProduct>> i = mapPortfolioProduct.entrySet().iterator();
         while (i.hasNext()) {

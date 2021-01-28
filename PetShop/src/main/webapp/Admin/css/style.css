@@ -221,3 +221,12 @@ body{
     display: block;
     color: blue !important;
 }
+.pagination li a{
+    display: inline-block;
+    background: beige;
+    color:gray;
+    font-size: 25px;
+    width: 30px;
+    text-align: center;
+    margin-right: 5px;
+}

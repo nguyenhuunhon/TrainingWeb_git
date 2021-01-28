@@ -2,19 +2,12 @@ package Controller;
 
 import DAO.ItemCartDAO;
 import DAO.OrderDAO;
-import Model.AccountCustomer;
-import Model.InforCustomer;
-import Model.MailService;
-import pluginView.EmailContent;
+import Model.Account;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.Properties;
 
 @WebServlet(name = "Order", value = "/Order")
 public class Order extends HttpServlet {
@@ -22,7 +15,7 @@ public class Order extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =request.getSession();
         Model.Cart cart= (Model.Cart) session.getAttribute("Cart");
-        AccountCustomer acc= (AccountCustomer) session.getAttribute("userLogin");
+        Account acc= (Account) session.getAttribute("userLogin");
         String event=request.getParameter("event");
         String id=request.getParameter("id");
         String dbt=request.getParameter("dbt");

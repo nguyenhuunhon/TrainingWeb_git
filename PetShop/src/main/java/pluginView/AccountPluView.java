@@ -1,12 +1,12 @@
 package pluginView;
 
-import Model.AccountCustomer;
+import Model.Account;
 
 import javax.servlet.http.HttpSession;
 
 public class AccountPluView {
     public String getAccount(HttpSession session) {
-        AccountCustomer acc = (AccountCustomer) session.getAttribute("userLogin");
+        Account acc = (Account) session.getAttribute("userLogin");
         String result = "";
         if (acc != null) {
 

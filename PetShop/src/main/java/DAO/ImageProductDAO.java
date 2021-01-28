@@ -30,6 +30,16 @@ public class ImageProductDAO implements ObjectDAO{
     public boolean del(String id) {
         return false;
     }
+    public ArrayList<ImageProduct> getProductByProduct(String IDProduct){
+        List<ImageProduct> listImage=new ArrayList<>(mapImageProduct.values());
+        ArrayList<ImageProduct> result=new ArrayList<>();
+        for(ImageProduct i:listImage){
+            if(i.getProduct().getIDProduct().equals(IDProduct)){
+                result.add(i);
+            }
+        }
+        return result;
+    }
     public String getAvatarProduct(String IDProduct){
         List<ImageProduct> listImage=new ArrayList<>(mapImageProduct.values());
         for(ImageProduct i:listImage){

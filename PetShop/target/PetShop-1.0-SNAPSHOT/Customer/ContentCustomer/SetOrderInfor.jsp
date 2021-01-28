@@ -63,6 +63,26 @@
     </div>
 </div>
 <jsp:include page="../LayoutCustomer/Footer.jsp"/>
+<script>
+    var envenEditInfo = document.querySelector(".headInf a");
+    var cancelEditInfo = document.querySelector(".btEditIf a");
+    var formEditInfo=document.querySelector(".inforCustomer>form");
+    var checkInfoEdit = false;
+    envenEditInfo.addEventListener('click', () => {
+
+        if (checkInfoEdit == false) {
+            formEditInfo.style.overflow="visible";
+            checkInfoEdit = true;
+        } else {
+            formEditInfo.style.overflow="hidden";
+            checkInfoEdit= false;
+        }
+    });
+    cancelEditInfo.addEventListener('click', () => {
+        formEditInfo.style.overflow="hidden";
+        checkInfoEdit= false;
+    });
+</script>
 </body>
 
 </html>

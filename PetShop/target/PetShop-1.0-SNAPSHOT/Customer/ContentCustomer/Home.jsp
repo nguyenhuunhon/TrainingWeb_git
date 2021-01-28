@@ -63,8 +63,8 @@
                     <h2 class="title text-center paddingTopTitle">Danh sách nhãn hiệu</h2>
 
                     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                           <%=new ContentHome().getContentSupplier()%>
+                        <div class="carousel-inner" style="height: 200px">
+                            <%=new ContentHome().getContentSupplier()%>
                         </div>
                         <a class="left recommended-item-control" href="#recommended-item-carousel"
                            data-slide="prev">
@@ -84,6 +84,16 @@
 </section>
 <!--/content-->
 <jsp:include page="../LayoutCustomer/Footer.jsp"/>
+<script>var addAct = document.querySelectorAll(".addActl");
+var addActm = document.querySelectorAll(".addActm");
+var addACSli = document.querySelectorAll(".addACSli");
+addACSli[0].classList.add("active");
+addAct[0].classList.add("active");
+addActm[0].classList.add("active");
+var addACSliSup = document.querySelectorAll(".addACSliSup");
+addACSliSup[0].classList.add("active");
+
+</script>
 </body>
 
 </html>

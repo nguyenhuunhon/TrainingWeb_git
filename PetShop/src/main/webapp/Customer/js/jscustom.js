@@ -1,12 +1,3 @@
-window.onload=function () {
-    var addAct=document.getElementsByClassName("addActl");
-    var addActm=document.getElementsByClassName("addActm");
-    var addACSli=document.getElementsByClassName("addACSli");
-    addACSli[0].classList.add("active");
-    addAct[0].classList.add("active");
-    addActm[0].classList.add("active");
-}
-
 $(document).ready(function () {
 
     var searchBox = document.querySelector('.search_box');
@@ -72,6 +63,34 @@ $(document).ready(function () {
             updateAmount[i].value = quanDow;
         })
     }
+    $('.cart').click(function () {
+        var id = $(this).data('id');
+        var amount=document.querySelector("#amountPro").value;
+        $.ajax({
+            type: 'POST',
+            data: {
+                id: id,
+                amount:amount
+            },
+            url: '/PetShop_war/AddItemCart',
+            success: function (data) {
+                swal({
+                        title: "Đã thêm vào giỏ hàng",
+                        text: "Bạn có thể mua hàng tiếp tục tới giỏ hàng để đặt hàng",
+                        showCancelButton: true,
+                        cancelButtonText: "xem tiếp",
+                        confirmButtonClass: "btn-success",
+                        confirmButtonText: "Đi đến giỏ hàng",
+                        closeOnConfirm: false
+
+                    },
+                    function () {
+                        window.location.href = "/PetShop_war/Cart";
+                    }
+                );
+            }
+        });
+    });
     $('.add-to-cart').click(function () {
         var id = $(this).data('id');
         $.ajax({
@@ -101,24 +120,7 @@ $(document).ready(function () {
 
 
 
-    var envenEditInfo = document.querySelector(".headInf a");
-    var cancelEditInfo = document.querySelector(".btEditIf a");
-    var formEditInfo=document.querySelector(".inforCustomer>form");
-    var checkInfoEdit = false;
-    envenEditInfo.addEventListener('click', () => {
 
-        if (checkInfoEdit == false) {
-            formEditInfo.style.overflow="visible";
-            checkInfoEdit = true;
-        } else {
-            formEditInfo.style.overflow="hidden";
-            checkInfoEdit= false;
-        }
-    });
-    cancelEditInfo.addEventListener('click', () => {
-        formEditInfo.style.overflow="hidden";
-        checkInfoEdit= false;
-    });
     // $(".buttonSearch").click(function () {
     //     var ser = document.querySelector(" .inpSearch");
     //     var valSer = ser.value;

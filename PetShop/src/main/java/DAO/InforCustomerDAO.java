@@ -18,7 +18,7 @@ public class InforCustomerDAO implements ObjectDAO {
 
     @Override
     public boolean add(Object obj) {
-        String query = "insert into infocustomer(Id_InfoCustomer,Id_AccountCustomer,Id_Adress,Phone)values(?,?,?,?)";
+        String query = "insert into infocustomer(Id_InfoCustomer,Id_Account,Id_Adress,Phone)values(?,?,?,?)";
         InforCustomer customer = (InforCustomer) obj;
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -59,7 +59,7 @@ public class InforCustomerDAO implements ObjectDAO {
 
     @Override
     public boolean edit(Object obj) {
-        String query = "update infocustomer set Id_AccountCustomer=?,Id_Adress=?,Phone=? where Id_InfoCustomer=? ";
+        String query = "update infocustomer set Id_Account=?,Id_Adress=?,Phone=? where Id_InfoCustomer=? ";
         InforCustomer customer = (InforCustomer) obj;
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -133,7 +133,7 @@ public class InforCustomerDAO implements ObjectDAO {
                     String IDAccountCustomer = rs.getString(2);
                     String IDAddress = rs.getString(3);
                     int phone = rs.getInt(4);
-                    listImageProduct.put(IDInforCustomer, new InforCustomer(IDInforCustomer, AccountCustomerDAO.mapAccountCustomer.get(IDAccountCustomer), AddressDAO.mapAddress.get(IDAddress), phone));
+                    listImageProduct.put(IDInforCustomer, new InforCustomer(IDInforCustomer, AccountDAO.mapAccountCustomer.get(IDAccountCustomer), AddressDAO.mapAddress.get(IDAddress), phone));
                 }
             } finally {
                 if (rs != null) {

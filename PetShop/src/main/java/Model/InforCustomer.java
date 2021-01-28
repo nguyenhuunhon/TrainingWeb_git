@@ -1,23 +1,22 @@
 package Model;
 
-import DAO.CartDAO;
 import DAO.InforCustomerDAO;
 
 public class InforCustomer {
     private String IDInforCustomer;
-    private AccountCustomer accountCustomer;
+    private Account account;
     private Address address;
     private int phone;
 
-    public InforCustomer(String IDInforCustomer, AccountCustomer accountCustomer, Address address, int phone) {
+    public InforCustomer(String IDInforCustomer, Account account, Address address, int phone) {
         this.IDInforCustomer = IDInforCustomer;
-        this.accountCustomer = accountCustomer;
+        this.account = account;
         this.address = address;
         this.phone = phone;
     }
     public InforCustomer(){
         setIDCustomer();
-        this.accountCustomer=null;
+        this.account =null;
         this.address=null;
         phone=0;
     }
@@ -26,16 +25,16 @@ public class InforCustomer {
         return IDInforCustomer;
     }
 
-    public AccountCustomer getAccountCustomer() {
-        return accountCustomer;
+    public Account getAccountCustomer() {
+        return account;
     }
 
     public Address getAddress() {
         return address;
     }
 
-    public void setAccountCustomer(AccountCustomer accountCustomer) {
-        this.accountCustomer = accountCustomer;
+    public void setAccountCustomer(Account account) {
+        this.account = account;
     }
 
     public void setAddress(Address address) {
