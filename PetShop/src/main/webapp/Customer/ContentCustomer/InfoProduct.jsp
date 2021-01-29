@@ -31,10 +31,10 @@
                     <!--category-tab-->
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
-                            <li><a href="#details" data-toggle="tab">Chi tiết</a></li>
+                            <li><a class="active" href="#details" data-toggle="tab">Chi tiết</a></li>
                             <!-- <li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li> -->
                             <!-- <li><a href="#tag" data-toggle="tab">Tag</a></li> -->
-                            <li class="active"><a href="#reviews" data-toggle="tab">Phản hồi (5)</a></li>
+                            <li ><a href="#reviews" data-toggle="tab">Phản hồi (5)</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">

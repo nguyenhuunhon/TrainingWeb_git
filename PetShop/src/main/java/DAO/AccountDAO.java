@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class AccountDAO implements  ObjectDAO{
         try {
 //            new ConnectDB().excuteSQl("insert into account_customer values('"+ acc.getIDAccountCustomer()+"', '"+ acc.getUserName()+"', '"+ acc.getPassword()+ "', '" + acc.getCustomerName() + "', '" + acc.getEmail()+"')");
 //            return true;
-            String query="insert into account(Id_Account,UserName,Password,CustomerName,Email, Date ) values (?,?,?,?,?,NOW());";
+            String query="insert into account(Id_Account,UserName,Password,CustomerName,Email,`Date` ) values (?,?,?,?,?,NOW());";
             Connection cn=new ConnectDB().getConnection();
             PreparedStatement P= cn.prepareStatement(query);
             P.setString(1,acc.getIDAccountCustomer());
@@ -54,7 +55,7 @@ public class AccountDAO implements  ObjectDAO{
 
             P.executeUpdate();
             cn.close();
-            mapAccountCustomer.put(acc.getIDAccountCustomer(),acc);
+            mapAccountCustomer=getLoadAccountCustomerDB();
             return true;
         } catch (Exception e){
             e.printStackTrace();
@@ -77,7 +78,7 @@ public class AccountDAO implements  ObjectDAO{
                 stmt.setString(3,acc.getCustomerName());
                 stmt.setString(4,acc.getEmail());
                 stmt.setString(5,acc.getIDAccountCustomer());
-
+                stmt.executeUpdate();
             } finally {
 
                 if (stmt != null) {
@@ -120,8 +121,9 @@ public class AccountDAO implements  ObjectDAO{
                     String password = rs.getString(3);
                     String customerName = rs.getString(4);
                     String email = rs.getString(5);
-                    String role=rs.getString(6);
-                    listAccountCustomer.put(IDAccount, new Account(IDAccount, userName, password, customerName, email,role));
+                    Date date=rs.getDate(6);
+                    String role=rs.getString(7);
+                    listAccountCustomer.put(IDAccount, new Account(IDAccount, userName, password, customerName, email,date,role));
                     System.out.println(userName);
                 }
             } finally {
@@ -141,7 +143,15 @@ public class AccountDAO implements  ObjectDAO{
 
         return listAccountCustomer;
     }
-
+    public String getPassWordByEmail(String email){
+        ArrayList<Account> listAc=new ArrayList<>(mapAccountCustomer.values());
+        for (Account ac:listAc){
+            if(ac.getEmail().equals(email)){
+                return ac.getPassword();
+            }
+        }
+        return null;
+    }
     public static void main(String[] args) {
 //        AccountCustomer acc = new AccountCustomer("ee444", "dung1", "12342", "ac", "dung1df23@gmail.com");
         Account acc1 = new Account("sd", "ưqrwe", "dsfds", "sfsd@gmail.com");

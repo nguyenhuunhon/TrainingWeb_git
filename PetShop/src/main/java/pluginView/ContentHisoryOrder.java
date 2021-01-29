@@ -17,9 +17,9 @@ public class ContentHisoryOrder {
         String result = "";
         ArrayList<Order> listOrder = new OrderDAO().getListOrderByCart(cart.getIDCart());
         for (Order o : listOrder) {
-            result += "<div class=\"Yorder historyOrder\">\n" +
-                    "            <a class=\"deleteHisOr\" href=\"/PetShop_war/Order?event=delete&id=" + o.getIDOrder() + "\"><i class=\"fas fa-times\"></i></a>\n" +
-                    "            <table>\n" +
+            result += "<div class=\"Yorder historyOrder\">\n";
+                    if(o.getStatus()==true){result+="            <a class=\"deleteHisOr\" href=\"/PetShop_war/Order?event=delete&id=" + o.getIDOrder() + "\"><i class=\"fas fa-times\"></i></a>\n";}
+                            result+="            <table>\n" +
                     "                <tr>\n" +
                     "                    <th colspan=\"2\"><h4 style=\"margin-bottom: 20px;\">Mã Đơn hàng:" + o.getIDOrder() + "</h4><h4>Ngày đặt hàng : " + o.getDate() + "</h4></th>\n" +
                     "                </tr>\n";
@@ -34,7 +34,7 @@ public class ContentHisoryOrder {
             }
             result += "                <tr>\n" +
                     "                    <td>Thành tiền</td>\n" +
-                    "                    <td style=\"color: orange;\">500.000đ</td>\n" +
+                    "                    <td style=\"color: orange;\">"+new ListItemCart().totalPriceListItemCartOrder(o.getIDOrder())+"đ</td>\n" +
                     "\n" +
                     "                </tr>\n" +
                     "            </table><br>\n" +

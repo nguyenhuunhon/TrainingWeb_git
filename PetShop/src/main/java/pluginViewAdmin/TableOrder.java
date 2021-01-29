@@ -43,7 +43,7 @@ public class TableOrder {
                     "                </div>\n" +
                     "                <td style=\"position: relative\"><a style=\"display: block;position: absolute;z-index:5;width: 100%;height: 100%;left: 0px;top: 0px\" aria-hidden=\"true\" data-toggle=\"modal\" data-target=\"#modalTickOrder"+o.getIDOrder()+"\"><input style=\"margin: auto;display: block;height:100%;width:18px\" type=\"checkbox\" disabled ";if(o.getStatus()==true){result+=" checked ";} result+="></a></td>\n" +
                     "                " +new MoldalDelete().getModalDelete("order",o.getIDOrder())+
-                    "                <td><a style=\"display: block;margin: auto\" aria-hidden=\"true\" data-toggle=\"modal\" data-target=\"#modalDelete\" class=\"delete\"><i class=\"fas fa-times\"></i></a></td>\n" +
+                    "                <td><a style=\"display: block;margin: auto\" aria-hidden=\"true\" data-toggle=\"modal\" data-target=\"#modalDelete"+o.getIDOrder()+"\" class=\"delete\"><i class=\"fas fa-times\"></i></a></td>\n" +
                     "            </tr>\n";
         }
         return result;

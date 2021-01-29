@@ -34,32 +34,37 @@ public class Account extends HttpServlet {
                     String userName = request.getParameter("userName");
                     String password = request.getParameter("password");
                     Model.Account acc = new AccountDAO().getAccount(userName, password);
+
                     if (acc != null) {
                         session.setAttribute("userLogin", acc);
                         InforCustomer customerByAcc = new InforCustomerDAO().getInforCustomerByAccount(acc.getIDAccountCustomer());
+                        if (acc.getRole()!=null&&acc.getRole().equals("admin")) {
+                            response.sendRedirect("Admin/ContentAdmin/HomeAdmin.jsp");
+                        } else {
 
-                        try {
-                            if (!customerByAcc.equals(null)) {
-                                session.setAttribute("Customer", customerByAcc);
-                                Cart cart = new CartDAO().getCartByCustomer(customerByAcc.getIDInforCustomer());
-                                session.setAttribute("Cart", cart);
 
+                            try {
+                                if (!customerByAcc.equals(null)) {
+                                    session.setAttribute("Customer", customerByAcc);
+                                    Cart cart = new CartDAO().getCartByCustomer(customerByAcc.getIDInforCustomer());
+                                    session.setAttribute("Cart", cart);
+
+                                }
+                            } catch (NullPointerException e) {
+                                InforCustomer customerSS = (InforCustomer) session.getAttribute("Customer");
+                                if (customerSS == null) {
+                                    customerSS = new InforCustomer();
+                                    customerSS.setAccountCustomer(acc);
+                                    new InforCustomerDAO().add(customerSS);
+                                    session.setAttribute("Customer", customerSS);
+                                } else {
+                                    customerSS.setAccountCustomer(acc);
+                                    new InforCustomerDAO().edit(customerSS);
+                                    session.setAttribute("Customer", customerSS);
+                                }
                             }
-                        } catch (NullPointerException e) {
-                            InforCustomer customerSS = (InforCustomer) session.getAttribute("Customer");
-                            if(customerSS==null){
-                                customerSS=new InforCustomer();
-                                customerSS.setAccountCustomer(acc);
-                                new InforCustomerDAO().add(customerSS);
-                                session.setAttribute("Customer", customerSS);
-                            }else {
-                                customerSS.setAccountCustomer(acc);
-                                new InforCustomerDAO().edit(customerSS);
-                                session.setAttribute("Customer", customerSS);
-                            }
+                            response.sendRedirect("Customer/ContentCustomer/Home.jsp");
                         }
-                        response.sendRedirect("Customer/ContentCustomer/Home.jsp");
-
                     } else {
                         request.setAttribute("userName", userName);
                         request.setAttribute("err", "Sai tên đăng nhập hoặc mật khẩu");
@@ -70,8 +75,8 @@ public class Account extends HttpServlet {
                 case "Logout":
 
                     session.setAttribute("userLogin", null);
-                    session.setAttribute("Cart",null);
-                    session.setAttribute("Customer",null);
+                    session.setAttribute("Cart", null);
+                    session.setAttribute("Customer", null);
                     response.sendRedirect("Customer/ContentCustomer/Login.jsp");
                     break;
 

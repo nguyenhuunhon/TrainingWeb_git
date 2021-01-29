@@ -1,4 +1,4 @@
-<%--
+<%@ page import="Model.Account" %><%--
   Created by IntelliJ IDEA.
   User: NHON
   Date: 12/27/2020
@@ -6,8 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    Account ac= (Account) session.getAttribute("userLogin");
+    if(ac==null||ac.getRole().equals("admin")==false)response.sendRedirect("/PetShop_war/Home");
+%>
 <html>
 <head>
+
     <title>Trang chủ Admin</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">

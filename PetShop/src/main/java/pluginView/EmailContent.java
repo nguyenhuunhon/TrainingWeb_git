@@ -181,7 +181,7 @@ public class EmailContent {
         }
         result += "                <tr>\n" +
                 "                    <td>Thành tiền</td>\n" +
-                "                    <td style=\"color: orange;\">500.000đ</td>\n" +
+                "                    <td style=\"color: orange;\">"+new ListItemCart().totalPriceListItemCartOrder(o.getIDOrder())+"đ</td>\n" +
                 "\n" +
                 "                </tr>\n" +
                 "            </table><br>\n" +

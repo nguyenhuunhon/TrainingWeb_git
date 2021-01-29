@@ -25,16 +25,16 @@
                     <!--login form-->
                     <h2><%=request.getAttribute("notyfi")==null?"":request.getAttribute("notyfi")%></h2>
                     <h2><%=request.getAttribute("err")==null?"Đăng nhập tài khoản":request.getAttribute("err")%></h2>
-                    <form action="/PetShop_war/Account?action=Login" method="post">
+                    <form action="/PetShop_war/Account?action=Login" class="loginC"  method="post">
                         <input type="text" name="userName" value="<%=request.getAttribute("userName")==null?"":request.getParameter("userName")%>" placeholder="Tên đăng nhập hoặc địa chỉ email" />
                         <input type="password" name="password" placeholder="Mật khẩu" />
                         <span>
 								<input type="checkbox" class="checkbox">
 								Lưu trữ đăng nhập
-								<a href="">Quên mật khẩu</a>
+								<a href="ForgotPassword.jsp">Quên mật khẩu</a>
 							</span>
 
-                        <button type="submit" class="btn btn-default">Đăng nhập</button>
+                        <button type="submit" class="btn btn-default btLogin">Đăng nhập</button>
                         <div class="loginOrther">
                             <h2>Đăng nhập bằng</h2>
                             <div class="btOrther">
@@ -54,12 +54,12 @@
                 <div class="signup-form">
                     <!--sign up form-->
                     <h2>Tạo tài khoản!</h2>
-                    <form action="/PetShop_war/Account?action=Register" method="post">
+                    <form action="/PetShop_war/Account?action=Register" class="registerC" onsubmit="" method="post">
                         <input type="text" name="name" placeholder="Họ và Tên" />
                         <input type="text" name="username" placeholder="Tên đăng nhập" />
                         <input type="email" name="email" placeholder="Địa chỉ email" />
-                        <input type="password" name="pass" placeholder="Mật khẩu" />
-                        <button type="submit" class="btn btn-default">Đăng ký</button>
+                        <input type="passwod" name="pass" placeholder="Mật khẩu" />
+                        <button type="submit" class="btn btn-default btRegis">Đăng ký</button>
                     </form>
                 </div>
                 <!--/sign up form-->

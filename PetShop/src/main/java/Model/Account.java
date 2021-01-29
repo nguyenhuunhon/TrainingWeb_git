@@ -1,19 +1,23 @@
 package Model;
 
+import java.util.Date;
+
 public class Account {
     private String IDAccountCustomer;
     private String userName;
     private String password;
     private String customerName;
     private String email;
+    private Date date;
     private String role;
 
-    public Account(String IDAccountCustomer, String userName, String password, String customerName, String email,String role) {
+    public Account(String IDAccountCustomer, String userName, String password, String customerName, String email,Date date,String role) {
         this.IDAccountCustomer = IDAccountCustomer;
         this.userName = userName;
         this.password = password;
         this.customerName = customerName;
         this.email = email;
+        this.date=date;
         this.role=role;
     }
 
@@ -22,6 +26,14 @@ public class Account {
         this.password = password;
         this.customerName = customerName;
         this.email = email;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     public Account(){

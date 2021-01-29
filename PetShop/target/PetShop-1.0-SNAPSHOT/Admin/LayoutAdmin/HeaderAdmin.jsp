@@ -1,4 +1,4 @@
-<%--
+<%@ page import="Model.Account" %><%--
   Created by IntelliJ IDEA.
   User: NHON
   Date: 12/26/2020
@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%
+    Account ac2= (Account) session.getAttribute("userLogin");
+%>
 <div class="header">
 
     <div class="right">
@@ -23,11 +26,11 @@
                 <li>Thông báo 3</li>
             </ul>
         </div>
-        <div class="account"><button><span><i class="fas fa-user-circle"></i><a>Nguyễn nhơn</a></span></button>
+        <div class="account"><button><span><i class="fas fa-user-circle"></i><a><%if (ac2==null){%>Tài khoản<%}else{%><%=ac2.getCustomerName()%><%}%></a></span></button>
             <ul class="moreAccount">
                 <li><i class="far fa-id-card"></i><a>Hồ sơ</a></li>
                 <li><i class="fas fa-user-cog"></i><a>Cài đặt</a></li>
-                <li><i class="fas fa-user-cog"></i><a href="./loginAdmin.html">Đăng xuất</a></li>
+                <li><i class="fas fa-user-cog"></i><a href="/PetShop_war/Account?action=Logout">Đăng xuất</a></li>
             </ul>
         </div>
     </div>

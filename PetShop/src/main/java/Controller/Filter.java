@@ -13,7 +13,6 @@ public class Filter extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             response.setCharacterEncoding("UTF-8");
             request.setCharacterEncoding("UTF-8");
-
             String Type=request.getParameter("Type");
             String id=request.getParameter("id").trim();
             switch (Type){

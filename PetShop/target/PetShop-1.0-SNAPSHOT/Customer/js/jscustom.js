@@ -118,8 +118,30 @@ $(document).ready(function () {
         });
     });
 
+    $(".btLogin").click(function () {$('.loginC').submit(function() {
+        var inputLoginC=document.querySelectorAll(".loginC>input");
+        var checkLC=true;
+        for(let i=0;i<inputLoginC.length;i++){
+            if(inputLoginC[i].value==""){
+                inputLoginC[i].style.border="1px solid red";
+                checkLC=false;
+            }
+        }
+        return checkLC;
 
+    });});
+    $(".btRegis").click(function () {$('.registerC').submit(function() {
+        var inputregisterC=document.querySelectorAll(".registerC>input");
+        var checkLC=true;
+        for(let i=0;i<inputregisterC.length;i++){
+            if(inputregisterC[i].value==""){
+                inputregisterC[i].style.border="1px solid red";
+                checkLC=false;
+            }
+        }
+        return checkLC;
 
+    });});
 
     // $(".buttonSearch").click(function () {
     //     var ser = document.querySelector(" .inpSearch");
