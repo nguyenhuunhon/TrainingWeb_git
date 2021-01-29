@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pluginViewAdmin.TableUser" %><%--
   Created by IntelliJ IDEA.
   User: NHON
   Date: 12/27/2020
@@ -20,11 +20,10 @@
     <div class="search">
         <form action="">
             <select name="" id="">
-                <option>Mã Admin</option>
-                <option>Tên Admin</option>
+                <option>Mã tài khoản</option>
+                <option>Tên tài khoản</option>
                 <option>Email</option>
                 <option>Quyền hạng</option>
-                <option>Sđt</option>
             </select>
             <input type="text" placeholder="Tim kiếm">
             <button type="submit"><i class="fas fa-search"></i></button>
@@ -38,30 +37,18 @@
         <thead>
         <tr>
             <th>Mã Admin</th>
-            <th >Tên Admin</th>
+            <th >UserName</th>
+            <th >Password</th>
+            <th >Tên tài khoản</th>
             <th >Email</th>
-            <th >Sđt</th>
+            <th >Ngày tạo</th>
             <th >Quyền hạng</th>
-            <th >Tác vụ</th>
 
         </tr>
 
         </thead>
         <tbody>
-        <tr>
-            <td>Tên sản phẩm</td>
-            <td>Giá gốc</td>
-            <td>Giá gốc</td>
-            <td>Giá gốc</td>
-            <td>Giá gốc</td>
-
-            <td>
-                <a aria-hidden="true" data-toggle="modal" data-target="#modalDelete" class="delete">Xóa</a>
-                <a href="./editPromotion.html" class="edit">Sửa</a>
-            </td>
-        </tr>
-
-
+        <%=new TableUser().getContent()%>
         </tbody>
     </table>
 </div>

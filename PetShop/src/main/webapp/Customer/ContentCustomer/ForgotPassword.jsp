@@ -62,8 +62,11 @@
                 <%}else{%>
                 <form class="ForgotPassForm" action="/PetShop_war/ForgotPassword" method="post">
                     <h2>Quên Mật khẩu ?</h2>
-                    <p><%=request.getAttribute("errForgotPass")==null?"Nhập địa chỉ email mà bạn đã đăng ký để nhận lại mật khẩu":request.getAttribute("errForgotPass")%></p>
+                    <p><%=request.getAttribute("errForgotPass")==null?"Điền thông tin để tạo mật khẩu mới":request.getAttribute("errForgotPass")%></p>
                     <input type="email" name="email" placeholder="Nhập đia chỉ email">
+                    <input type="password" name="password1" id="password1" placeholder="Nhập mật khẩu mới">
+                    <input type="password" name="password2" id="password2" placeholder="Nhập lại mật khẩu">
+                    <p class="errPas" style="color: red;display: none">Mật khẩu không khớp</p>
                     <div class="g-recaptcha" data-sitekey="6LfLpUEaAAAAALoWbyjrtlAiuGfprAirxtwimC8I" data-callback="enableBtn">Bạn có phải là robot không ?</div>
                     <button type="submit" id="forgotPassBt" disabled="disabled">Gửi yêu cầu</button>
                 </form>
@@ -79,6 +82,16 @@
 </section>
 <!--/form-->
 <jsp:include page="../LayoutCustomer/Footer.jsp"/>
+<script>
+    $("#forgotPassBt").click(function () {$(".ForgotPassForm").submit(function() {
+            if($("#password1").val()!=$("#password2").val()){
+                document.querySelector("#password2").style.border="1px solid red";
+                document.querySelector(".errPas").style.display="block";
+                return false;
+            }
+            return true;
+    });});
+</script>
 </body>
 
 </html>

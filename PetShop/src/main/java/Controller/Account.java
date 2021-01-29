@@ -5,6 +5,7 @@ import DAO.CartDAO;
 import DAO.InforCustomerDAO;
 import Model.Cart;
 import Model.InforCustomer;
+import Model.MD5;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,6 +34,8 @@ public class Account extends HttpServlet {
                 case "Login":
                     String userName = request.getParameter("userName");
                     String password = request.getParameter("password");
+                    password=new MD5().encodeMD5(password);
+
                     Model.Account acc = new AccountDAO().getAccount(userName, password);
 
                     if (acc != null) {
@@ -85,6 +88,7 @@ public class Account extends HttpServlet {
                     String username = request.getParameter("username");
                     String email = request.getParameter("email");
                     String pass = request.getParameter("pass");
+                    pass=new MD5().encodeMD5(pass);
 
                     boolean checkRegister = new AccountDAO().checkRegister(username, email);
                     if (checkRegister == true) {

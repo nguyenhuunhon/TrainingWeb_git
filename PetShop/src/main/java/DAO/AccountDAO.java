@@ -143,11 +143,11 @@ public class AccountDAO implements  ObjectDAO{
 
         return listAccountCustomer;
     }
-    public String getPassWordByEmail(String email){
+    public Account getAccountByEmail(String email){
         ArrayList<Account> listAc=new ArrayList<>(mapAccountCustomer.values());
         for (Account ac:listAc){
             if(ac.getEmail().equals(email)){
-                return ac.getPassword();
+                return ac;
             }
         }
         return null;

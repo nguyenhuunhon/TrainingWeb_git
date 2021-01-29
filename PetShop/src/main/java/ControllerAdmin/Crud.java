@@ -105,7 +105,7 @@ public class Crud extends HttpServlet {
                                 if (item.getFieldName() == null || item.getFieldName().equals("")) {
                                     break;
                                 } else {
-                                    String storePath = servletContext.getRealPath("C:\\Users\\NHON\\Desktop\\git_trainingweb\\TrainingWeb_git\\PetShop\\src\\main\\webapp\\images\\Product");
+                                    String storePath = servletContext.getRealPath("images/Product");
                                     File uploadFile = new File(storePath + "\\" + igNew.getIDImageProdcut() + ".jpg");
                                     item.write(uploadFile);
                                     System.out.println(storePath + "\\" + igNew.getIDImageProdcut() + ".jpg");
@@ -139,7 +139,7 @@ public class Crud extends HttpServlet {
                                 if (item.getFieldName() == null || item.getFieldName().equals("")) {
                                     break;
                                 } else {
-                                    String storePath = servletContext.getRealPath("C:\\Users\\NHON\\Desktop\\git_trainingweb\\TrainingWeb_git\\PetShop\\src\\main\\webapp\\images\\Product");
+                                    String storePath = servletContext.getRealPath("images/Product");
                                     File FileOld = new File(storePath + "\\" + ig.getIDImageProdcut() + ".jpg");
                                     FileOld.delete();
                                     File uploadFile = new File(storePath + "\\" + ig.getIDImageProdcut() + ".jpg");
@@ -157,7 +157,7 @@ public class Crud extends HttpServlet {
                         e.printStackTrace();
                     }
                 } else if (curd.equals("delete")) {
-                    String storePath = servletContext.getRealPath("C:\\Users\\NHON\\Desktop\\git_trainingweb\\TrainingWeb_git\\PetShop\\src\\main\\webapp\\images\\Product");
+                    String storePath = servletContext.getRealPath("images/Product");
                     File FileOld = new File(storePath + "\\" + id.trim() + ".jpg");
                     FileOld.delete();
                     new ImageProductDAO().del(id);
