@@ -20,20 +20,7 @@ window.onload = function () {
 
 
 
-    var user=document.querySelector(".user");
-    var powerUser=document.querySelector(".user .powerUser");
-    var checkU=false;
-    user.addEventListener("click",()=>{
-        if(checkU==false){
-            user.style.height="150px";
-            powerUser.style.height="100px";
-            checkU=true;
-        }else{
-            user.style.height="50px";
-            powerUser.style.height="0px";
-            checkU=false;
-        }
-    })
+
     var product=document.querySelector(".product");
     var powerProduct=document.querySelector(".product .powerProduct");
     var checkP=false;
@@ -64,12 +51,3 @@ window.onload = function () {
     });
 
 }
-$(document).ready(function() {
-    $("#selectPortfolioPro").select2();
-    $("#selectCategoryPro").select2();
-    $("#selectObjectPro").select2();
-    $("#selectSupplierPro").select2();
-    $("#condition").select2();
-
-
-});

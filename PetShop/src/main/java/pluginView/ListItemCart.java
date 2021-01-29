@@ -48,7 +48,18 @@ public class ListItemCart {
         int result=0;
         List<ItemCart> list=new ItemCartDAO().listItemCartByCartNotOrder(IDCart);
         for(ItemCart l:list){
+
             result+=+l.getAmount()*l.getProduct().getPrice();
+        }
+        return result;
+
+    }
+    public int totalPriceListItemCartOrder(String IDOrder){
+        int result=0;
+        List<ItemCart> list=new ItemCartDAO().listItemCartByCartOrder(IDOrder);
+        for(ItemCart l:list){
+                result += +l.getAmount() * l.getProduct().getPrice();
+
         }
         return result;
 

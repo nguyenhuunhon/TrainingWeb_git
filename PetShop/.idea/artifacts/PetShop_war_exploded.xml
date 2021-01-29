@@ -21,6 +21,8 @@
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.6" />
           <element id="library" level="project" name="Maven: javax.mail:mail:1.4" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.4" />
+          <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.15" />
         </element>
       </element>
       <element id="directory" name="META-INF">

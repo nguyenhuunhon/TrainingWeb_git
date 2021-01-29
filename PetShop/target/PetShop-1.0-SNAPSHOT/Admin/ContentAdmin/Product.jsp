@@ -20,7 +20,7 @@
             <form action="/PetShop_war/FillterProductAd?page=1" method="POST">
                 <select name="type" id="">
                     <%String type=request.getParameter("type");%>
-                    <option <%if(type.equals("All")){%>selected<%}%> value="All">Tất cả</option>
+                    <option <%if(type.equals("All")){%>selected<%}%> value="All" disabled hidden>Tìm theo</option>
                     <option <%if(type.equals("IdProduct")){%>selected<%}%> value="IdProduct">Mã sản phẩm</option>
                     <option <%if(type.equals("nameProduct")){%>selected<%}%> value="nameProduct">Tên sản phẩm</option>
                     <option <%if(type.equals("Portfolio")){%>selected<%}%> value="Portfolio">Danh mục</option>
@@ -36,7 +36,7 @@
         </div>
         <%=new TableProduct().getModalAddProduct()%>
         <div class="add">
-            <a data-toggle="modal" data-target="#formAddPro"><i class="fas fa-plus" ></i>Thêm Sản Phẩm</a>
+            <a  data-toggle="modal" data-target="#formAddPro"><i class="fas fa-plus" ></i>Thêm Sản Phẩm</a>
         </div>
         <table class="tableCustom">
             <thead>

@@ -29,6 +29,29 @@ public class Product {
         this.condition=condition;
     }
 
+    public Product(String IDProduct, PortfolioProduct portfolio, SupplierProduct supplier, String title, String description, int price, boolean show, int inventory, String condition) {
+        this.IDProduct = IDProduct;
+        Portfolio = portfolio;
+        this.supplier = supplier;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.show = show;
+        this.inventory = inventory;
+        this.condition = condition;
+    }
+
+    public Product(PortfolioProduct portfolio, SupplierProduct supplier, String title, String description, int price, boolean show, int inventory, String condition) {
+        Portfolio = portfolio;
+        this.supplier = supplier;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.show = show;
+        this.inventory = inventory;
+        this.condition = condition;
+    }
+
     public int getPrice() {
         return price;
     }

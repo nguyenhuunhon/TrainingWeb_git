@@ -13,11 +13,11 @@
             <ul class="powerProduct">
                 <li><a href="/PetShop_war/FillterProductAd?page=1">Sản phẩm</a></li>
                 <li><a href="./SalePriceProduct.jsp">Sản phẩm khuyến mãi</a></li>
-                <li><a href="./ImageProduct.jsp">Hình ảnh sản phẩm</a></li>
+                <li><a href="/PetShop_war/FillterImgProduct?page=1">Hình ảnh sản phẩm</a></li>
 
             </ul>
         </li>
-        <li><a href="./Orders.jsp">Quản lý đơn hàng</a></li>
+        <li><a href="../ContentAdmin/Order.jsp">Quản lý đơn hàng</a></li>
         <li class="portfioloProduct showSubmenu"><a>Quản lý danh mục</a>
             <ul class="powerPortfioloProduct">
                 <li><a href="./PortfioloProduct.jsp">Danh mục sản phẩm</a></li>
@@ -27,12 +27,7 @@
             </ul></li>
         <li><a href="./News.jsp">Quản lý tin tức</a></li>
 
-        <li class="user showSubmenu"><a>Quản lý người dùng</a>
-            <ul class="powerUser">
-                <li><a href="./Customer.jsp">Khách hàng</a></li>
-                <li><a href="./Admin.jsp">Admin</a></li>
-
-            </ul>
+        <li><a href="../ContentAdmin/User.jsp">Quản lý người dùng</a>
         </li>
         <li><a href="./slider.jsp">Quản lý Slider</a></li>
     </ul>

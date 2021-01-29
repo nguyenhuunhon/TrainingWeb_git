@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pluginViewAdmin.TableOrder" %><%--
   Created by IntelliJ IDEA.
   User: NHON
   Date: 12/27/2020
@@ -31,44 +31,18 @@
             <thead>
             <tr>
                 <th>Mã đơn hàng</th>
-                <th>Mã giỏ hàng</th>
+                <th>Mã khách hàng</th>
                 <th>Tên khách hàng</th>
                 <th>Ngày đặt</th>
                 <th>Tổng tiền</th>
                 <th>Hình thức</th>
-                <th>Trạng thái</th>
-                <th>Xem chi tiết</th>
+                <th>Đã giao</th>
                 <th>Tác vụ</th>
             </tr>
 
             </thead>
             <tbody>
-            <tr>
-                <td>11</td>
-                <td>2</td>
-                <td>Nguyễn Văn A</td>
-                <td>20-11-2020<br>
-                    14:22:48
-                </td>
-                <td>200000</td>
-                <td>Chuyển khoản</td>
-                <td>dang giao</td>
-                <td><a href="./infoOrder.html">Xem chi tiết</a></td>
-                <td><i class="fas fa-times"></i></td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>2</td>
-                <td>Nguyễn Văn A</td>
-                <td>20-11-2020<br>
-                    14:22:48
-                </td>
-                <td>200000</td>
-                <td>Chuyển khoản</td>
-                <td>dang giao</td>
-                <td><a href="./infoOrder.html">Xem chi tiết</a></td>
-                <td><i class="fas fa-times"></i></td>
-            </tr>
+            <%=new TableOrder().getContentOrder()%>
             </tbody>
         </table>
     </div>

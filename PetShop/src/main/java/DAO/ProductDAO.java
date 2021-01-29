@@ -1,11 +1,9 @@
 package DAO;
 
-import Model.ConnectDB;
-import Model.PortfolioProduct;
-import Model.Product;
-import Model.SupplierProduct;
+import Model.*;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
@@ -177,16 +175,104 @@ public class ProductDAO implements ObjectDAO {
     }
     @Override
     public boolean add(Object obj) {
+        String query = "insert into product(Id_PortfolioProduct,Id_SupplierProduct,`Date`,Title,Desription,Price,`Show`,Inventory,`Condition`)values(?,?,NOW(),?,?,?,?,?,?)";
+        Product p = (Product) obj;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.prepareStatement(query);
+                stmt.setString(1, p.getPortfolio().getIDPortfolioProduct());
+                stmt.setString(2, p.getSupplier().getIDSupplierProduct());
+                stmt.setString(3, p.getTitle());
+                stmt.setString(4, p.getDescription());
+                stmt.setInt(5,p.getPrice());
+                stmt.setBoolean(6,p.getShow());
+                stmt.setInt(7,p.getInventory());
+                stmt.setString(8,p.getCondition());
+
+                stmt.executeUpdate();
+                mapProduct=getLoadProductDB();
+            } finally {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean edit(Object obj) {
+        String query = "update product set Id_PortfolioProduct=?,Id_SupplierProduct=?,Title=?,Desription=?,Price=?,`Show`=?,Inventory=?,`Condition`=? where Id_Product=?";
+        Product p = (Product) obj;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.prepareStatement(query);
+                stmt.setString(1, p.getPortfolio().getIDPortfolioProduct());
+                stmt.setString(2, p.getSupplier().getIDSupplierProduct());
+                stmt.setString(3, p.getTitle());
+                stmt.setString(4, p.getDescription());
+                stmt.setInt(5,p.getPrice());
+                stmt.setBoolean(6,p.getShow());
+                stmt.setInt(7,p.getInventory());
+                stmt.setString(8,p.getCondition());
+                stmt.setString(9,p.getIDProduct());
+                stmt.executeUpdate();
+                mapProduct=getLoadProductDB();
+            } finally {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean del(String id) {
+        String query = "delete from product where Id_Product=?";
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.prepareStatement(query);
+                stmt.setString(1,id);
+                stmt.executeUpdate();
+                mapProduct=getLoadProductDB();
+            } finally {
+
+                if(stmt!=null){
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
     public ArrayList<Product> getLoadProductByObject(String name){
@@ -541,7 +627,40 @@ public class ProductDAO implements ObjectDAO {
         }
         return listProduct;
     }
+    public ArrayList<String> getLoadConditionPro(){
+        ArrayList<String> listCondition = new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
 
+
+            try {
+                conn = ConnectDB.getInstance().getConnection();
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("SELECT `Condition` FROM `product` GROUP BY `Condition`");
+
+                while (rs.next()) {
+                    String condition = rs.getString(1);
+                    listCondition.add(condition);
+                }
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    ConnectDB.getInstance().close(conn);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listCondition;
+    }
     public static void main(String[] args) throws Exception {
         List<Product> listProduct2= new ArrayList<>(ProductDAO.mapProduct.values());
         for (Product p : listProduct2) {

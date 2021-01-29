@@ -17,6 +17,9 @@ public class FillterProductAd extends HttpServlet {
         if(input==null){
             input="null";
         }
+        if(type==null){
+            type="null";
+        }
         String page=request.getParameter("page");
         response.sendRedirect("Admin/ContentAdmin/Product.jsp?type="+type+"&input="+ URLEncoder.encode(input, "UTF-8")+"&page="+page);
     }
